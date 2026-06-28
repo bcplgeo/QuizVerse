@@ -1,3 +1,18 @@
+// =============================================================
+// START: Audio Manager Import
+//
+// Purpose:
+// Gives this screen access to QuizVerse's centralized
+// Audio Manager.
+//
+// =============================================================
+
+import '../services/audio_manager.dart';
+
+// =============================================================
+// END: Audio Manager Import
+// =============================================================
+
 import 'package:flutter/material.dart';
 
 import '../models/question.dart';
@@ -232,6 +247,19 @@ class _GameScreenState extends State<GameScreen> {
   void checkAnswer(int selectedIndex) {
     questionTimer?.cancel();
     if (selectedIndex == currentQuestion.correctAnswerIndex) {
+      // =============================================================
+// START: Correct Answer Sound
+//
+// Purpose:
+// Play a positive sound whenever the player answers correctly.
+//
+// =============================================================
+
+      AudioManager.playCorrectSound();
+
+// =============================================================
+// END: Correct Answer Sound
+// =============================================================
       gameController.addScore();
       gameController.updateHighScore();
       lastAnswerCorrect = true;

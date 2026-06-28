@@ -31,9 +31,23 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  # ==========================================================
+  # START: Flutter Packages
+  #
+  # Purpose:
+  # External packages used by QuizVerse.
+  #
+  # audioplayers:
+  # Plays short sound effects like Correct, Wrong,
+  # Timer Warning and Game Over.
+  # ==========================================================
+
   cupertino_icons: ^1.0.8
+  audioplayers: ^6.5.0
+
+  # ==========================================================
+  # END: Flutter Packages
+  # ==========================================================
 
 dev_dependencies:
   flutter_test:
@@ -52,12 +66,25 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  # ==========================================================
+  # START: Flutter Assets
+  #
+  # Purpose:
+  # Register all asset folders used by QuizVerse.
+  #
+  # Flutter can only load assets that are listed here.
+  #
+  # ==========================================================
+
   uses-material-design: true
+
   assets:
     - assets/images/
+    - assets/audio/
+
+  # ==========================================================
+  # END: Flutter Assets
+  # ==========================================================
 
   # To add assets to your application, add an assets section, like this:
   # assets:
