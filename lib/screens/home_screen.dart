@@ -1,0 +1,190 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import '../utils/category_theme.dart';
+
+// Import Game Screen
+import 'game_screen.dart';
+
+import '../utils/categories.dart';
+
+// =========================================
+// HOME SCREEN
+// =========================================
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // =========================================
+  // SELECTED CATEGORY
+  // =========================================
+
+  String selectedCategory = QuizCategory.science;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('QuizVerse'),
+
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              SystemNavigator.pop();
+            },
+          ),
+        ],
+      ),
+
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              // =========================================
+              // APP TITLE
+              // =========================================
+
+              const Text(
+                'QuizVerse',
+                style: TextStyle(
+                  fontSize: 42,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              const Text(
+                'Survive. Climb. Conquer.',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white70,
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              // =========================================
+              // CATEGORY TITLE
+              // =========================================
+
+              const Text(
+                'Choose Category',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // =========================================
+              // CATEGORY CHIPS
+              // =========================================
+
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                alignment: WrapAlignment.center,
+                children: [
+                  QuizCategory.science,
+                  QuizCategory.history,
+                  QuizCategory.geography,
+                  QuizCategory.sports,
+                  QuizCategory.technology,
+                  QuizCategory.generalKnowledge,
+                  QuizCategory.environment,
+                  QuizCategory.all,
+                ].map((category) {
+                  return ChoiceChip(
+                    avatar: Icon(
+                      getCategoryIcon(category),
+                      size: 18,
+                      color: selectedCategory == category
+                          ? Colors.white
+                          : getCategoryColor(category),
+                    ),
+
+                    label: Text(
+                      category,
+                      style: TextStyle(
+                        color: selectedCategory == category
+                            ? Colors.white
+                            : getCategoryColor(category),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    backgroundColor: getCategoryButtonBackground(category),
+
+                    selectedColor: getCategoryColor(category),
+
+                    selected: selectedCategory == category,
+
+                    onSelected: (_) {
+                      setState(() {
+                        selectedCategory = category;
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
+
+              const SizedBox(height: 40),
+
+              // =========================================
+              // START GAME
+              // =========================================
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GameScreen(
+                        category: selectedCategory,
+                      ),
+                    ),
+                  );
+                },
+
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple,
+
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                    vertical: 18,
+                  ),
+                ),
+
+                child: const Text(
+                  'START GAME',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// =========================================
+// END OF FILE
+// =========================================
