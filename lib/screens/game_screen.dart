@@ -69,6 +69,66 @@ class GameScreen extends StatefulWidget {
   State<GameScreen> createState() => _GameScreenState();
 }
 
+// =============================================================
+// START: QUESTION OPTION SHUFFLER
+// =============================================================
+//
+// Purpose:
+// --------
+// Randomly shuffle the answer options while keeping track
+// of the correct answer.
+//
+// Why?
+// ----
+// Our question database stores the correct answer at
+// index 0 for most questions.
+//
+// Without shuffling:
+//
+//   A ✅
+//   B
+//   C
+//   D
+//
+// Players quickly discover the pattern.
+//
+// This function randomizes the options and automatically
+// updates the correctAnswerIndex.
+//
+// =============================================================
+
+Question shuffleQuestionOptions(Question question) {
+
+  // Create a copy of the options.
+  final shuffledOptions = List<String>.from(question.options);
+
+  // Store the correct answer BEFORE shuffling.
+  final correctAnswer =
+  question.options[question.correctAnswerIndex];
+
+  // Randomly shuffle the copied list.
+  shuffledOptions.shuffle();
+
+  // Find the new location of the correct answer.
+  final newCorrectIndex =
+  shuffledOptions.indexOf(correctAnswer);
+
+  // Return a brand-new Question object.
+  return Question(
+    category: question.category,
+    questionText: question.questionText,
+    options: shuffledOptions,
+    correctAnswerIndex: newCorrectIndex,
+    explanation: question.explanation,
+    whyItMatters: question.whyItMatters,
+    difficulty: question.difficulty,
+  );
+}
+
+// =============================================================
+// END: QUESTION OPTION SHUFFLER
+// =============================================================
+
 // =========================================
 // DISPOSE
 // =========================================
@@ -135,9 +195,23 @@ class _GameScreenState extends State<GameScreen> {
     // All
     // =========================================
 
-    questions = List.from(
-      QuestionRepository.getQuestions(widget.category),
-    );
+    // =============================================================
+// START: LOAD QUESTIONS WITH SHUFFLED OPTIONS
+//
+// Purpose:
+// Load all questions and randomize the answer options
+// for every question before the game begins.
+//
+// =============================================================
+
+    questions = QuestionRepository
+        .getQuestions(widget.category)
+        .map(shuffleQuestionOptions)
+        .toList();
+
+// =============================================================
+// END: LOAD QUESTIONS WITH SHUFFLED OPTIONS
+// =============================================================
 
     if (widget.shuffleQuestions) {
       questions.shuffle();
@@ -185,6 +259,24 @@ class _GameScreenState extends State<GameScreen> {
 
   int timeRemaining = 10;
 
+  // =============================================================
+// START: Pending Game Over Flag
+//
+// Purpose:
+// Delays the Game Over dialog until the player has
+// finished reading the Review Card.
+//
+// false = Continue game normally
+// true  = Show Game Over after Next is pressed
+//
+// =============================================================
+
+  bool pendingGameOver = false;
+
+// =============================================================
+// END: Pending Game Over Flag
+// =============================================================
+
 
   // =========================================
   // CURRENT QUESTION
@@ -192,6 +284,7 @@ class _GameScreenState extends State<GameScreen> {
 
   Question get currentQuestion =>
       questions[currentQuestionIndex];
+
 
   // =========================================
 // START TIMER
@@ -229,10 +322,26 @@ class _GameScreenState extends State<GameScreen> {
   void handleTimeUp() {
     gameController.loseLife();
 
+    // =============================================================
+// START: Delay Game Over Until Review Card
+//
+// Purpose:
+// If the player has lost the last life,
+// do NOT show the Game Over dialog immediately.
+//
+// Instead, remember that a Game Over is pending.
+// The dialog will appear after the player presses
+// the Next button on the Review Card.
+//
+// =============================================================
+
     if (gameController.isGameOver()) {
-      showGameOverDialog();
-      return;
+      pendingGameOver = true;
     }
+
+// =============================================================
+// END: Delay Game Over Until Review Card
+// =============================================================
 
     setState(() {
       lastAnswerCorrect = false;
@@ -264,25 +373,93 @@ class _GameScreenState extends State<GameScreen> {
       gameController.updateHighScore();
       lastAnswerCorrect = true;
     } else {
+
+      // =============================================================
+      // START: Wrong Answer Sound
+      //
+      // Purpose:
+      // Play a short sound whenever the player
+      // selects an incorrect answer.
+      //
+      // This sound is played immediately so the
+      // player receives instant feedback.
+      // =============================================================
+
+      AudioManager.playWrongSound();
+
+      // =============================================================
+      // END: Wrong Answer Sound
+      // =============================================================
+
       gameController.loseLife();
       lastAnswerCorrect = false;
 
-      if (gameController.isGameOver()) {
-        showGameOverDialog();
-        return;
-      }
-    }
+      // =============================================================
+// START: Delay Game Over Until Review Card
+//
+// Purpose:
+// Remember that the game is over, but allow the
+// Review Card to appear first.
+//
+// =============================================================
 
+      if (gameController.isGameOver()) {
+        pendingGameOver = true;
+      }
+
+// =============================================================
+// END: Delay Game Over Until Review Card
+// =============================================================
+    }
+// =============================================================
+// START: Review Card Debug
+//
+// Purpose:
+// Verify that the game reaches the code responsible
+// for displaying the Review Card.
+//
+// Remove after debugging.
+//
+// =============================================================
+
+    print("QuizVerse: Showing Review Card");
+
+// =============================================================
+// END: Review Card Debug
+// =============================================================
     setState(() {
       showReviewCard = true;
     });
   }
+
+
 
   // =========================================
   // NEXT QUESTION
   // =========================================
 
   void moveToNextQuestion() {
+
+    // =============================================================
+// START: Pending Game Over Check
+//
+// Purpose:
+// If the player has already lost all lives,
+// show the Game Over dialog instead of moving
+// to another question.
+//
+// =============================================================
+
+    if (pendingGameOver) {
+      pendingGameOver = false;
+
+      showGameOverDialog();
+      return;
+    }
+
+// =============================================================
+// END: Pending Game Over Check
+// =============================================================
     showReviewCard = false;
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
