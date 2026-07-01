@@ -13,6 +13,21 @@ import '../services/audio_manager.dart';
 // END: Audio Manager Import
 // =============================================================
 
+// =============================================================
+// START: Storage Service Import
+//
+// Purpose:
+// Load and save persistent data such as
+// High Score and future app settings.
+//
+// =============================================================
+
+import '../services/storage_service.dart';
+
+// =============================================================
+// END: Storage Service Import
+// =============================================================
+
 import 'package:flutter/material.dart';
 
 import '../models/question.dart';
@@ -34,6 +49,8 @@ import '../widgets/hangman_widget.dart';
 import 'dart:math';
 
 import '../utils/category_theme.dart';
+
+import '../services/vibration_manager.dart';
 
 
 
@@ -99,6 +116,22 @@ class GameScreen extends StatefulWidget {
 
 Question shuffleQuestionOptions(Question question) {
 
+  // =============================================================
+// START: Debug Question Shuffle
+//
+// Purpose:
+// Verify that every question passes through the
+// answer randomization function.
+//
+// Remove after testing.
+//
+// =============================================================
+
+
+// =============================================================
+// END: Debug Question Shuffle
+// =============================================================
+
   // Create a copy of the options.
   final shuffledOptions = List<String>.from(question.options);
 
@@ -107,7 +140,9 @@ Question shuffleQuestionOptions(Question question) {
   question.options[question.correctAnswerIndex];
 
   // Randomly shuffle the copied list.
-  shuffledOptions.shuffle();
+  shuffledOptions.shuffle(
+    Random(DateTime.now().microsecondsSinceEpoch),
+  );
 
   // Find the new location of the correct answer.
   final newCorrectIndex =
@@ -171,10 +206,34 @@ class _GameScreenState extends State<GameScreen> {
 // INIT STATE
 // =========================================
 
-  @override
+  // =============================================================
+// START: Load Saved High Score
+//
+// Purpose:
+// Load the saved High Score from device storage
+// when the Game Screen is created.
+//
+// =============================================================
+
+  Future<void> loadHighScore() async {
+    final savedHighScore = await StorageService.loadHighScore();
+
+    if (!mounted) return;
+
+    setState(() {
+      gameController.highScore = savedHighScore;
+    });
+  }
+
+// =============================================================
+// END: Load Saved High Score
+// =============================================================
+
   @override
   void initState() {
     super.initState();
+    // Load saved High Score
+    loadHighScore();
 
 
     // =========================================
@@ -212,12 +271,6 @@ class _GameScreenState extends State<GameScreen> {
 // =============================================================
 // END: LOAD QUESTIONS WITH SHUFFLED OPTIONS
 // =============================================================
-
-    if (widget.shuffleQuestions) {
-      questions.shuffle();
-    }
-
-
 
     // =========================================
     // SHUFFLE ONLY FOR NEW GAMES
@@ -260,6 +313,21 @@ class _GameScreenState extends State<GameScreen> {
   int timeRemaining = 10;
 
   // =============================================================
+// START: Timer Warning Flag
+//
+// Purpose:
+// Ensures the timer warning sound is played
+// only once for each question.
+//
+// =============================================================
+
+  bool timerWarningPlayed = false;
+
+// =============================================================
+// END: Timer Warning Flag
+// =============================================================
+
+  // =============================================================
 // START: Pending Game Over Flag
 //
 // Purpose:
@@ -282,8 +350,29 @@ class _GameScreenState extends State<GameScreen> {
   // CURRENT QUESTION
   // =========================================
 
-  Question get currentQuestion =>
-      questions[currentQuestionIndex];
+  // =============================================================
+// START: Current Question Debug
+//
+// Purpose:
+// Display the current correct answer index in the app.
+// This helps us verify whether answer options are being
+// randomized.
+//
+// IMPORTANT:
+// Remove this after debugging.
+//
+// =============================================================
+
+  Question get currentQuestion {
+    print(
+        "Current Correct Index = ${questions[currentQuestionIndex].correctAnswerIndex}");
+
+    return questions[currentQuestionIndex];
+  }
+
+// =============================================================
+// END: Current Question Debug
+// =============================================================
 
 
   // =========================================
@@ -294,9 +383,13 @@ class _GameScreenState extends State<GameScreen> {
     // Stop existing timer
     questionTimer?.cancel();
 
-    // Reset timer value
+    // Reset timer state for the new question.
     setState(() {
       timeRemaining = 10;
+
+      // Allow the warning sound to play again
+      // for this question.
+      timerWarningPlayed = false;
     });
 
     questionTimer = Timer.periodic(
@@ -308,6 +401,27 @@ class _GameScreenState extends State<GameScreen> {
           setState(() {
             timeRemaining--;
           });
+
+          // =============================================================
+          // START: Timer Warning Sound
+          //
+          // Purpose:
+          // Play a warning sound once when only
+          // 3 seconds remain.
+          //
+          // =============================================================
+
+          if (timeRemaining == 3 && !timerWarningPlayed) {
+            timerWarningPlayed = true;
+
+            print("WARNING SOUND TRIGGERED AT: $timeRemaining");
+
+            AudioManager.playTimerWarningSound();
+          }
+
+          // =============================================================
+          // END: Timer Warning Sound
+          // =============================================================
         } else {
           timer.cancel();
           handleTimeUp();
@@ -353,7 +467,7 @@ class _GameScreenState extends State<GameScreen> {
   // CHECK ANSWER
   // =========================================
 
-  void checkAnswer(int selectedIndex) {
+  Future<void> checkAnswer(int selectedIndex) async {
     questionTimer?.cancel();
     if (selectedIndex == currentQuestion.correctAnswerIndex) {
       // =============================================================
@@ -369,9 +483,34 @@ class _GameScreenState extends State<GameScreen> {
 // =============================================================
 // END: Correct Answer Sound
 // =============================================================
+      // =============================================================
+// START: Update & Save High Score
+//
+// Purpose:
+// After a correct answer, update the High Score.
+// If a new record is achieved, immediately save it
+// to permanent storage.
+//
+// This protects the score even if the app closes
+// unexpectedly.
+//
+// =============================================================
+
       gameController.addScore();
+
+      final previousHighScore = gameController.highScore;
+
       gameController.updateHighScore();
+
+      if (gameController.highScore > previousHighScore) {
+        StorageService.saveHighScore(gameController.highScore);
+      }
+
       lastAnswerCorrect = true;
+
+// =============================================================
+// END: Update & Save High Score
+// =============================================================
     } else {
 
       // =============================================================
@@ -386,6 +525,7 @@ class _GameScreenState extends State<GameScreen> {
       // =============================================================
 
       AudioManager.playWrongSound();
+      await VibrationManager.vibrateShort();
 
       // =============================================================
       // END: Wrong Answer Sound
@@ -485,9 +625,53 @@ class _GameScreenState extends State<GameScreen> {
       builder: (context) {
         return AlertDialog(
           title: const Text('Game Over'),
-          content: Text(
-            'Final Score: ${gameController.score}',
+          // =============================================================
+// START: Game Over Statistics
+//
+// Purpose:
+// Display a detailed summary of the player's
+// performance.
+//
+// =============================================================
+
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              Text(
+                '🏆 Final Score : ${gameController.score}',
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                '⭐ High Score : ${gameController.highScore}',
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                '❓ Questions : ${gameController.questionsAnswered}',
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                '✅ Correct : ${gameController.correctAnswers}',
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                '📊 Accuracy : ${gameController.accuracyPercentage.toStringAsFixed(1)}%',
+              ),
+            ],
           ),
+
+// =============================================================
+// END: Game Over Statistics
+// =============================================================
 
           actions: [
             TextButton(
@@ -502,6 +686,25 @@ class _GameScreenState extends State<GameScreen> {
                   gameController.score = 0;
                   gameController.lives = 3;
                   timeRemaining = 10;
+                  // =============================================================
+// =============================================================
+// START: Reset Complete Game State
+//
+// Purpose:
+// Reset the game for a brand-new session.
+//
+// All gameplay state is reset by the
+// GameController.
+//
+// =============================================================
+
+                  gameController.resetGame();
+
+                  pendingGameOver = false;
+
+// =============================================================
+// END: Reset Complete Game State
+// =============================================================
                 });
 
                 startTimer();
@@ -528,6 +731,9 @@ class _GameScreenState extends State<GameScreen> {
 
   void showQuizCompletedDialog() {
     gameController.updateHighScore();
+    if (lastAnswerCorrect) {
+      AudioManager.playVictorySound();
+    }
         showDialog(
       context: context,
       barrierDismissible: false,
@@ -877,6 +1083,20 @@ class _GameScreenState extends State<GameScreen> {
           whyItMatters: currentQuestion.whyItMatters,
 
           difficulty: currentQuestion.difficulty,
+            // =============================================================
+// START: Final Review Status
+//
+// Purpose:
+// Tell the Review Card whether this is the last
+// review before the Game Over dialog.
+//
+// =============================================================
+
+            isFinalReview: pendingGameOver,
+
+// =============================================================
+// END: Final Review Status
+// =============================================================
 
           onNext: moveToNextQuestion,
         )

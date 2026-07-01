@@ -47,6 +47,22 @@ class AudioManager {
   static final AudioPlayer _player = AudioPlayer();
 
   // =============================================================
+// START: Sound Enabled Flag
+//
+// Purpose:
+// Controls whether sounds are allowed to play.
+//
+// Updated from the Settings screen.
+//
+// =============================================================
+
+  static bool soundEnabled = true;
+
+// =============================================================
+// END: Sound Enabled Flag
+// =============================================================
+
+  // =============================================================
   // START: Play Correct Answer Sound
   // =============================================================
   //
@@ -63,6 +79,7 @@ class AudioManager {
   // =============================================================
 
   static Future<void> playCorrectSound() async {
+    if (!soundEnabled) return;
     await _player.stop(); // Stop any previous sound before playing a new one.
 
     // =============================================================
@@ -109,6 +126,7 @@ class AudioManager {
 // =============================================================
 
   static Future<void> playWrongSound() async {
+    if (!soundEnabled) return;
     // Stop any sound currently playing.
     await _player.stop();
 
@@ -120,6 +138,53 @@ class AudioManager {
 
 // =============================================================
 // END: Play Wrong Answer Sound
+// =============================================================
+
+// =============================================================
+// START: Play Timer Warning Sound
+//
+// Purpose:
+// Plays a short warning sound when only a few
+// seconds remain for the current question.
+//
+// =============================================================
+
+  static Future<void> playTimerWarningSound() async {
+    if (!soundEnabled) return;
+
+    await _player.stop();
+
+    await _player.play(
+      AssetSource('audio/timer_warning.mp3'),
+    );
+  }
+
+
+// =============================================================
+// END: Play Timer Warning Sound
+// =============================================================
+
+// =============================================================
+// START: Play Victory Sound
+//
+// Purpose:
+// Plays a short victory sound when the player
+// successfully completes the quiz.
+//
+// =============================================================
+
+  static Future<void> playVictorySound() async {
+    if (!soundEnabled) return;
+
+    await _player.stop();
+
+    await _player.play(
+      AssetSource('audio/victory.mp3'),
+    );
+  }
+
+// =============================================================
+// END: Play Victory Sound
 // =============================================================
 
 }

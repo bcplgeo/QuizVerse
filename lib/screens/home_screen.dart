@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../utils/category_theme.dart';
+import 'settings_screen.dart';
 
 // Import Game Screen
 import 'game_screen.dart';
@@ -33,14 +34,64 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('QuizVerse'),
 
+        // =============================================================
+// START: Overflow Menu
+//
+// Purpose:
+// Provides access to secondary actions such as
+// Settings and Exit.
+//
+// =============================================================
+
         actions: [
-          IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              SystemNavigator.pop();
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              switch (value) {
+                case 'settings':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SettingsScreen(),
+                    ),
+                  );
+                  break;
+
+                case 'exit':
+                  SystemNavigator.pop();
+                  break;
+              }
             },
+
+            itemBuilder: (context) => const [
+
+              PopupMenuItem(
+                value: 'settings',
+                child: Row(
+                  children: [
+                    Icon(Icons.settings),
+                    SizedBox(width: 10),
+                    Text('Settings'),
+                  ],
+                ),
+              ),
+
+              PopupMenuItem(
+                value: 'exit',
+                child: Row(
+                  children: [
+                    Icon(Icons.close),
+                    SizedBox(width: 10),
+                    Text('Exit'),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
+
+// =============================================================
+// END: Overflow Menu
+// =============================================================
       ),
 
       body: Center(

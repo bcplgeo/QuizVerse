@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 // =========================================
 
 class AnswerReviewCard extends StatelessWidget {
+
   final bool isCorrect;
 
   // Correct answer
@@ -19,6 +20,23 @@ class AnswerReviewCard extends StatelessWidget {
   // Difficulty
   final String difficulty;
 
+// =============================================================
+// START: Final Review Flag
+//
+// Purpose:
+// Indicates whether this is the final review card
+// before the Game Over dialog.
+//
+// false → Show "NEXT"
+// true  → Show "FINISH"
+//
+// =============================================================
+
+  final bool isFinalReview;
+
+// =============================================================
+// END: Final Review Flag
+// =============================================================
   // Next question callback
   final VoidCallback onNext;
 
@@ -29,6 +47,7 @@ class AnswerReviewCard extends StatelessWidget {
     required this.explanation,
     required this.whyItMatters,
     required this.difficulty,
+    required this.isFinalReview,
     required this.onNext,
   });
 
@@ -142,9 +161,30 @@ class AnswerReviewCard extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: onNext,
-                child: const Text(
-                  'NEXT',
+                // =============================================================
+// START: Dynamic Button Text
+//
+// Purpose:
+// Display the appropriate button text.
+//
+// Normal Review:
+//      NEXT
+//
+// Final Review:
+//      FINISH
+//
+// This gives the player a clear indication that
+// the quiz is about to end.
+//
+// =============================================================
+
+                child: Text(
+                  isFinalReview ? 'FINISH' : 'NEXT',
                 ),
+
+// =============================================================
+// END: Dynamic Button Text
+// =============================================================
               ),
             ),
           ],
