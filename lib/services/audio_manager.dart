@@ -187,6 +187,29 @@ class AudioManager {
 // END: Play Victory Sound
 // =============================================================
 
+// =============================================================
+// START: Play Game Over Sound
+//
+// Purpose:
+// Plays a short failure sound when the player
+// loses all lives.
+//
+// =============================================================
+
+  static Future<void> playGameOverSound() async {
+    if (!soundEnabled) return;
+
+    await _player.stop();
+
+    await _player.play(
+      AssetSource('audio/game_over.mp3'),
+    );
+  }
+
+// =============================================================
+// END: Play Game Over Sound
+// =============================================================
+
 }
 
 // =============================================================

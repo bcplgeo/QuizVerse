@@ -619,6 +619,7 @@ class _GameScreenState extends State<GameScreen> {
 
   void showGameOverDialog() {
         gameController.updateHighScore();
+        AudioManager.playGameOverSound();
     showDialog(
       context: context,
       barrierDismissible: false,

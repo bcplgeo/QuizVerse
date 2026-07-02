@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
 import '../services/audio_manager.dart';
 import '../services/vibration_manager.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // =============================================================
 // END: IMPORTS
@@ -87,6 +90,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
 // =============================================================
 // END: Load Saved Settings
+// =============================================================
+
+  // =============================================================
+// START: In-App Review
+//
+// Purpose:
+// Provides access to Google's native
+// Play Store review dialog.
+//
+// =============================================================
+
+  final InAppReview inAppReview = InAppReview.instance;
+
+// =============================================================
+// END: In-App Review
 // =============================================================
 
   // =============================================================
@@ -236,22 +254,53 @@ class _SettingsScreenState extends State<SettingsScreen> {
 // =============================================================
 
           ListTile(
-            leading: Icon(Icons.star_rate),
-            title: Text("Rate QuizVerse"),
+            leading: const Icon(Icons.star_rate),
+
+            title: const Text("Rate QuizVerse"),
+
+            onTap: () async {
+              if (await inAppReview.isAvailable()) {
+                await inAppReview.requestReview();
+              }
+            },
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.share),
-            title: Text("Share QuizVerse"),
+            leading: const Icon(Icons.share),
+
+            title: const Text("Share QuizVerse"),
+
+            onTap: () {
+              SharePlus.instance.share(
+                ShareParams(
+                  text:
+                  "I'm enjoying QuizVerse! 🎯\n\nChallenge yourself with fun quizzes across multiple categories.\n\nComing soon on Google Play!",
+                ),
+              );
+            },
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.support_agent),
-            title: Text("Support"),
+            leading: const Icon(Icons.support_agent),
+
+            title: const Text("Support"),
+
+              onTap: () async {
+
+                final Uri emailUri = Uri(
+                  scheme: 'mailto',
+                  path: 'mannzverse.apps@gmail.com',
+                  query: 'subject=QuizVerse Support',
+                );
+
+                if (await canLaunchUrl(emailUri)) {
+                  await launchUrl(emailUri);
+                }
+              }
           ),
 
           Divider(),
