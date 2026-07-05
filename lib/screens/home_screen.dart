@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../utils/category_theme.dart';
@@ -9,6 +8,8 @@ import 'settings_screen.dart';
 import 'game_screen.dart';
 
 import '../utils/categories.dart';
+
+import 'package:quizverse/services/audio_manager.dart';
 
 // =========================================
 // HOME SCREEN
@@ -26,7 +27,30 @@ class _HomeScreenState extends State<HomeScreen> {
   // SELECTED CATEGORY
   // =========================================
 
+
+
   String selectedCategory = QuizCategory.science;
+
+  // =============================================================
+// START: HOME SCREEN INITIALIZATION
+// =============================================================
+//
+// Purpose:
+// --------
+// Runs once when the Home Screen is created.
+//
+// =============================================================
+
+  @override
+  void initState() {
+    super.initState();
+    print("HomeScreen initState");
+    AudioManager.playIntroMusic();
+  }
+
+// =============================================================
+// END: HOME SCREEN INITIALIZATION
+// =============================================================
 
   @override
   Widget build(BuildContext context) {
@@ -94,144 +118,151 @@ class _HomeScreenState extends State<HomeScreen> {
 // =============================================================
       ),
 
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
+        body: SafeArea(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 500,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(24),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+                        // =========================================
+                        // APP LOGO
+                        // =========================================
 
-            children: [
-              // =========================================
-              // APP TITLE
-              // =========================================
+                        Image.asset(
+                          'assets/images/quizverse_logo.png',
+                          height: MediaQuery.of(context).size.height * 0.18,
+                        ),
 
-              const Text(
-                'QuizVerse',
-                style: TextStyle(
-                  fontSize: 42,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+                        const SizedBox(height: 12),
 
-              const SizedBox(height: 16),
+                        const Text(
+                          'Challenge Your Mind.\nExpand Your Knowledge.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white70,
+                          ),
+                        ),
 
-              const Text(
-                'Survive. Climb. Conquer.',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white70,
-                ),
-              ),
+                        const SizedBox(height: 24),
 
-              const SizedBox(height: 40),
+                        // =========================================
+                        // CATEGORY TITLE
+                        // =========================================
 
-              // =========================================
-              // CATEGORY TITLE
-              // =========================================
+                        const Text(
+                          'Choose Category',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
 
-              const Text(
-                'Choose Category',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+                        const SizedBox(height: 12),
 
-              const SizedBox(height: 20),
+                        // =========================================
+                        // CATEGORY CHIPS
+                        // =========================================
 
-              // =========================================
-              // CATEGORY CHIPS
-              // =========================================
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          alignment: WrapAlignment.center,
+                          children: [
+                            QuizCategory.science,
+                            QuizCategory.history,
+                            QuizCategory.geography,
+                            QuizCategory.sports,
+                            QuizCategory.technology,
+                            QuizCategory.generalKnowledge,
+                            QuizCategory.environment,
+                            QuizCategory.all,
+                          ].map((category) {
+                            return ChoiceChip(
+                              avatar: Icon(
+                                getCategoryIcon(category),
+                                size: 18,
+                                color: selectedCategory == category
+                                    ? Colors.white
+                                    : getCategoryColor(category),
+                              ),
+                              label: Text(
+                                category,
+                                style: TextStyle(
+                                  color: selectedCategory == category
+                                      ? Colors.white
+                                      : getCategoryColor(category),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              backgroundColor:
+                              getCategoryButtonBackground(category),
+                              selectedColor: getCategoryColor(category),
+                              selected: selectedCategory == category,
+                              onSelected: (_) {
+                                setState(() {
+                                  selectedCategory = category;
+                                });
+                              },
+                            );
+                          }).toList(),
+                        ),
 
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                alignment: WrapAlignment.center,
-                children: [
-                  QuizCategory.science,
-                  QuizCategory.history,
-                  QuizCategory.geography,
-                  QuizCategory.sports,
-                  QuizCategory.technology,
-                  QuizCategory.generalKnowledge,
-                  QuizCategory.environment,
-                  QuizCategory.all,
-                ].map((category) {
-                  return ChoiceChip(
-                    avatar: Icon(
-                      getCategoryIcon(category),
-                      size: 18,
-                      color: selectedCategory == category
-                          ? Colors.white
-                          : getCategoryColor(category),
+                        const SizedBox(height: 24),
+
+                        // =========================================
+                        // START GAME
+                        // =========================================
+
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GameScreen(
+                                  category: selectedCategory,
+                                ),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.deepPurple,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 40,
+                              vertical: 18,
+                            ),
+                          ),
+                          child: const Text(
+                            'START GAME',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-
-                    label: Text(
-                      category,
-                      style: TextStyle(
-                        color: selectedCategory == category
-                            ? Colors.white
-                            : getCategoryColor(category),
-                        fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-
-                    backgroundColor: getCategoryButtonBackground(category),
-
-                    selectedColor: getCategoryColor(category),
-
-                    selected: selectedCategory == category,
-
-                    onSelected: (_) {
-                      setState(() {
-                        selectedCategory = category;
-                      });
-                    },
-                  );
-                }).toList(),
-              ),
-
-              const SizedBox(height: 40),
-
-              // =========================================
-              // START GAME
-              // =========================================
-
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => GameScreen(
-                        category: selectedCategory,
-                      ),
-                    ),
-                  );
-                },
-
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
-
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 18,
-                  ),
                 ),
-
-                child: const Text(
-                  'START GAME',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
+                );
+              },
           ),
         ),
-      ),
     );
   }
 }

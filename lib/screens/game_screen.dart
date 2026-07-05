@@ -457,10 +457,8 @@ class _GameScreenState extends State<GameScreen> {
 // END: Delay Game Over Until Review Card
 // =============================================================
 
-    setState(() {
-      lastAnswerCorrect = false;
-      showReviewCard = true;
-    });
+    lastAnswerCorrect = false;
+    showReviewDialog();
   }
 
   // =========================================
@@ -567,12 +565,33 @@ class _GameScreenState extends State<GameScreen> {
 // =============================================================
 // END: Review Card Debug
 // =============================================================
-    setState(() {
-      showReviewCard = true;
-    });
+    showReviewDialog();
   }
 
-
+  void showReviewDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          insetPadding: const EdgeInsets.all(16),
+          child: AnswerReviewCard(
+            isCorrect: lastAnswerCorrect,
+            correctAnswer:
+            currentQuestion.options[currentQuestion.correctAnswerIndex],
+            explanation: currentQuestion.explanation,
+            whyItMatters: currentQuestion.whyItMatters,
+            difficulty: currentQuestion.difficulty,
+            isFinalReview: pendingGameOver,
+            onNext: () {
+              Navigator.pop(context);
+              moveToNextQuestion();
+            },
+          ),
+        );
+      },
+    );
+  }
 
   // =========================================
   // NEXT QUESTION
@@ -880,7 +899,7 @@ class _GameScreenState extends State<GameScreen> {
       body: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(10),
                 child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -990,6 +1009,69 @@ class _GameScreenState extends State<GameScreen> {
             ),
 
             const SizedBox(height: 6),
+
+            Container(
+              width: double.infinity,
+
+              padding: const EdgeInsets.all(16),
+
+              decoration: BoxDecoration(
+                color: Colors.white,
+
+                borderRadius: BorderRadius.circular(18),
+
+                border: Border.all(
+                  color: getCategoryColor(
+                    questions[currentQuestionIndex].category,
+                  ),
+                  width: 2,
+                ),
+
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+
+              child: Column(
+                children: [
+
+                  // ==========================
+                  // HANGMAN
+                  // ==========================
+
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.15,
+
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 45),
+
+                        child: HangmanWidget(
+                          timeRemaining: timeRemaining,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  const SizedBox(height: 8),
+
+                  // ==========================
+                  // TITLE
+                  // ==========================
+
+
+                ],
+              ),
+            ),
+
 
             // =========================================
             // QUESTION NUMBER
@@ -1158,7 +1240,7 @@ class _GameScreenState extends State<GameScreen> {
                         Text(
                           currentQuestion.questionText,
                           style: const TextStyle(
-                            fontSize: 22,
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                             color: Colors.black87,
                             height: 1.35,
@@ -1168,7 +1250,7 @@ class _GameScreenState extends State<GameScreen> {
                     ),
                   ),
 
-    const SizedBox(height: 18),
+    const SizedBox(height: 10),
 
     ...List.generate(
     currentQuestion.options.length,
@@ -1209,7 +1291,7 @@ class _GameScreenState extends State<GameScreen> {
           ),
 
           padding: const EdgeInsets.symmetric(
-            vertical: 18,
+            vertical: 14,
           ),
         ),
 
@@ -1217,7 +1299,7 @@ class _GameScreenState extends State<GameScreen> {
           currentQuestion.options[index],
           textAlign: TextAlign.center,
           style: const TextStyle(
-            fontSize: 17,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -1226,73 +1308,12 @@ class _GameScreenState extends State<GameScreen> {
     },
     ),
 
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 4),
 
                   // =========================================
 // HANGMAN & GAME STATS PANEL
 // =========================================
 
-                  Container(
-                    width: double.infinity,
-
-                    padding: const EdgeInsets.all(16),
-
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-
-                      borderRadius: BorderRadius.circular(18),
-
-                      border: Border.all(
-                        color: getCategoryColor(
-                          questions[currentQuestionIndex].category,
-                        ),
-                        width: 2,
-                      ),
-
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 6,
-                          offset: Offset(0, 3),
-                        ),
-                      ],
-                    ),
-
-                    child: Column(
-                      children: [
-
-                        // ==========================
-                        // HANGMAN
-                        // ==========================
-
-                        SizedBox(
-                          height: 170,
-
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 80),
-
-                              child: HangmanWidget(
-                                timeRemaining: timeRemaining,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 6),
-
-                        const SizedBox(height: 8),
-
-                        // ==========================
-                        // TITLE
-                        // ==========================
-
-
-                      ],
-                    ),
-                  ),
 
 // =========================================
 // END PANEL

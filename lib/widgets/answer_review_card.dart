@@ -55,139 +55,112 @@ class AnswerReviewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 4,
-
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.60,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+              // =========================================
+              // RESULT
+              // =========================================
 
-          children: [
-            // =========================================
-            // RESULT
-            // =========================================
-
-            Text(
-              isCorrect
-                  ? '✅ Correct'
-                  : '❌ Incorrect',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color:
-                isCorrect ? Colors.green : Colors.red,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // =========================================
-            // CORRECT ANSWER
-            // =========================================
-
-            const Text(
-              'Correct Answer',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            Text(
-              correctAnswer,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // =========================================
-            // EXPLANATION
-            // =========================================
-
-            const Text(
-              'Explanation',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            Text(explanation),
-
-            const SizedBox(height: 20),
-
-            // =========================================
-            // WHY IT MATTERS
-            // =========================================
-
-            const Text(
-              'Why It Matters',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            Text(whyItMatters),
-
-            const SizedBox(height: 20),
-
-            // =========================================
-            // DIFFICULTY
-            // =========================================
-
-            Text(
-              'Difficulty: $difficulty',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-            // =========================================
-            // NEXT BUTTON
-            // =========================================
-
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: onNext,
-                // =============================================================
-// START: Dynamic Button Text
-//
-// Purpose:
-// Display the appropriate button text.
-//
-// Normal Review:
-//      NEXT
-//
-// Final Review:
-//      FINISH
-//
-// This gives the player a clear indication that
-// the quiz is about to end.
-//
-// =============================================================
-
-                child: Text(
-                  isFinalReview ? 'FINISH' : 'NEXT',
+              Text(
+                isCorrect ? '✅ Correct' : '❌ Incorrect',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: isCorrect ? Colors.green : Colors.red,
                 ),
-
-// =============================================================
-// END: Dynamic Button Text
-// =============================================================
               ),
-            ),
-          ],
+
+              const SizedBox(height: 12),
+
+              // =========================================
+              // SCROLLABLE CONTENT
+              // =========================================
+
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                      const Text(
+                        'Correct Answer',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      Text(
+                        correctAnswer,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      const Text(
+                        'Explanation',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      Text(explanation),
+
+                      const SizedBox(height: 16),
+
+                      const Text(
+                        'Why It Matters',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 6),
+
+                      Text(whyItMatters),
+
+                      const SizedBox(height: 16),
+
+                      Text(
+                        'Difficulty: $difficulty',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              // =========================================
+              // NEXT BUTTON (ALWAYS VISIBLE)
+              // =========================================
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: onNext,
+                  child: Text(
+                    isFinalReview ? 'FINISH' : 'NEXT',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

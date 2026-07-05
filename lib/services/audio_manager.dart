@@ -210,6 +210,38 @@ class AudioManager {
 // END: Play Game Over Sound
 // =============================================================
 
+// =============================================================
+// START: INTRO MUSIC
+// =============================================================
+//
+// Purpose:
+// --------
+// Plays the QuizVerse intro theme once when the Home Screen opens.
+//
+// Notes:
+// ------
+// - Respects the global sound setting.
+// - Plays only once.
+// - Does NOT loop.
+// =============================================================
+  // NOTE:
+// This music plays only once when the Home Screen is first created.
+// It respects the user's Sound ON/OFF preference.
+
+  static Future<void> playIntroMusic() async {
+    if (!soundEnabled) return;
+
+    await _player.stop();
+
+    await _player.play(
+        AssetSource('audio/intro.mp3')
+    );
+  }
+
+// =============================================================
+// END: INTRO MUSIC
+// =============================================================
+
 }
 
 // =============================================================

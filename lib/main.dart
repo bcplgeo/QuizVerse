@@ -7,6 +7,34 @@ import 'services/storage_service.dart';
 import 'services/audio_manager.dart';
 import 'services/vibration_manager.dart';
 
+// START: ROOT APPLICATION
+// =============================================================
+/// Root widget for QuizVerse.
+
+class QuizVerseApp extends StatelessWidget {
+  const QuizVerseApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
+      title: 'QuizVerse',
+
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: const Color(0xFF121212),
+      ),
+
+      home: const SplashScreen(),
+    );
+  }
+}
+// =============================================================
+
+// END: ROOT APPLICATION
+// =============================================================
 /// =============================================================
 /// APPLICATION ENTRY POINT
 /// =============================================================
@@ -36,32 +64,4 @@ Future<void> main() async {
   // Launch the application.
   runApp(const QuizVerseApp());
 }
-// =============================================================
-// START: ROOT APPLICATION
-// =============================================================
-
-/// Root widget for QuizVerse.
-class QuizVerseApp extends StatelessWidget {
-  const QuizVerseApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-
-      title: 'QuizVerse',
-
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.deepPurple,
-        scaffoldBackgroundColor: const Color(0xFF121212),
-      ),
-
-      home: const SplashScreen(),
-    );
-  }
-}
-
-// =============================================================
-// END: ROOT APPLICATION
 // =============================================================

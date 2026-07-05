@@ -9,6 +9,7 @@ import '../services/vibration_manager.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'about_screen.dart';
 
 // =============================================================
 // END: IMPORTS
@@ -289,57 +290,62 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             title: const Text("Support"),
 
-              onTap: () async {
+            onTap: () async {
 
-                final Uri emailUri = Uri(
-                  scheme: 'mailto',
-                  path: 'mannzverse.apps@gmail.com',
-                  query: 'subject=QuizVerse Support',
-                );
+              final Uri emailUri = Uri(
+                scheme: 'mailto',
+                path: 'mannzverse.apps@gmail.com',
+                query:
+                'subject=QuizVerse Support'
+                    '&body=Hello MannzVerse Team,%0D%0A%0D%0A'
+                    'I need help with QuizVerse.%0D%0A%0D%0A'
+                    '------------------------------%0D%0A%0D%0A'
+                    'QuizVerse Version: 1.0.0%0D%0A'
+                    'Android Version:%0D%0A'
+                    'Device:%0D%0A%0D%0A'
+                    'Issue Description:%0D%0A',
+              );
 
-                if (await canLaunchUrl(emailUri)) {
-                  await launchUrl(emailUri);
-                }
-              }
+              await launchUrl(
+                emailUri,
+                mode: LaunchMode.externalApplication,
+              );
+            },
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.privacy_tip),
-            title: Text("Privacy Policy"),
+            leading: const Icon(Icons.privacy_tip),
+            title: const Text("Privacy Policy"),
+            onTap: () async {
+              final Uri privacyUri = Uri.parse(
+                'https://bcplgeo.github.io/QuizVerse-Privacy/',
+              );
+
+              await launchUrl(
+                privacyUri,
+                mode: LaunchMode.externalApplication,
+              );
+            },
           ),
 
           Divider(),
 
           ListTile(
-            leading: Icon(Icons.info_outline),
-            title: Text("About QuizVerse"),
+            leading: const Icon(Icons.info),
+            title: const Text("About QuizVerse"),
+
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const AboutScreen(),
+                ),
+              );
+            },
           ),
 
-          SizedBox(height: 20),
-
-          Center(
-            child: Text(
-              "Version 1.0.0",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ),
-
-          SizedBox(height: 8),
-
-          Center(
-            child: Text(
-              "Made with ❤️ by Mann'zVerse",
-              style: TextStyle(
-                color: Colors.grey,
-              ),
-            ),
-          ),
-
-          SizedBox(height: 30),
 
         ],
       ),
