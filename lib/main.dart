@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home_screen.dart';
+
 import 'screens/splash_screen.dart';
 
 import 'services/storage_service.dart';
 import 'services/audio_manager.dart';
 import 'services/vibration_manager.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:quizverse/managers/ad_manager.dart';
 
 // START: ROOT APPLICATION
 // =============================================================
@@ -46,6 +48,8 @@ class QuizVerseApp extends StatelessWidget {
 Future<void> main() async {
   // Required before using async platform services.
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
+  AdManager.loadInterstitialAd();
 
   // Load the user's saved sound preference.
   final bool soundEnabled =

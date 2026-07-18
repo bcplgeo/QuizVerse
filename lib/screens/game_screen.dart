@@ -51,6 +51,11 @@ import 'dart:math';
 import '../utils/category_theme.dart';
 
 import '../services/vibration_manager.dart';
+import 'package:quizverse/managers/ad_manager.dart';
+
+import 'game_over_screen.dart';
+
+import 'quiz_completed_screen.dart';
 
 
 
@@ -66,7 +71,7 @@ class GameScreen extends StatefulWidget {
 
   final String category;
 
-  // =========================================
+    // =========================================
   // SHUFFLE CONTROL
   // =========================================
 
@@ -172,6 +177,23 @@ Question shuffleQuestionOptions(Question question) {
 
 class _GameScreenState extends State<GameScreen> {
 
+
+  // =============================================================
+// START: GameScreen Context
+//
+// Purpose:
+// Stores the GameScreen's own BuildContext so it can be
+// used later after asynchronous operations like ads.
+//
+// =============================================================
+
+  late BuildContext gameScreenContext;
+
+// =============================================================
+// END: GameScreen Context
+// =============================================================
+
+
   // =========================================
 // QUESTIONS FOR CURRENT GAME
 // =========================================
@@ -190,11 +212,7 @@ class _GameScreenState extends State<GameScreen> {
 
   int currentQuestionIndex = 0;
 
-  // =========================================
-  // REVIEW CARD STATE
-  // =========================================
-
-  bool showReviewCard = false;
+bool showReviewCard = false;
 
   // =========================================
   // LAST ANSWER RESULT
@@ -310,6 +328,24 @@ class _GameScreenState extends State<GameScreen> {
 
   Timer? questionTimer;
 
+// =============================================================
+// START: Timer Pause Flag
+//
+// Purpose:
+// Temporarily freezes the quiz timer while an
+// interstitial advertisement is being shown.
+//
+// false = Timer runs normally
+// true  = Timer is paused
+//
+// =============================================================
+
+  bool isTimerPaused = false;
+
+// =============================================================
+// END: Timer Pause Flag
+// =============================================================
+
   int timeRemaining = 10;
 
   // =============================================================
@@ -364,10 +400,7 @@ class _GameScreenState extends State<GameScreen> {
 // =============================================================
 
   Question get currentQuestion {
-    print(
-        "Current Correct Index = ${questions[currentQuestionIndex].correctAnswerIndex}");
-
-    return questions[currentQuestionIndex];
+        return questions[currentQuestionIndex];
   }
 
 // =============================================================
@@ -396,6 +429,10 @@ class _GameScreenState extends State<GameScreen> {
       const Duration(seconds: 1),
           (timer) {
         if (!mounted) return;
+        // Pause countdown while an interstitial ad is visible.
+        if (isTimerPaused) {
+          return;
+        }
 
         if (timeRemaining > 0) {
           setState(() {
@@ -414,7 +451,7 @@ class _GameScreenState extends State<GameScreen> {
           if (timeRemaining == 3 && !timerWarningPlayed) {
             timerWarningPlayed = true;
 
-            print("WARNING SOUND TRIGGERED AT: $timeRemaining");
+
 
             AudioManager.playTimerWarningSound();
           }
@@ -549,22 +586,7 @@ class _GameScreenState extends State<GameScreen> {
 // END: Delay Game Over Until Review Card
 // =============================================================
     }
-// =============================================================
-// START: Review Card Debug
-//
-// Purpose:
-// Verify that the game reaches the code responsible
-// for displaying the Review Card.
-//
-// Remove after debugging.
-//
-// =============================================================
 
-    print("QuizVerse: Showing Review Card");
-
-// =============================================================
-// END: Review Card Debug
-// =============================================================
     showReviewDialog();
   }
 
@@ -572,7 +594,7 @@ class _GameScreenState extends State<GameScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) {
+      builder: (dialogContext) {
         return Dialog(
           insetPadding: const EdgeInsets.all(16),
           child: AnswerReviewCard(
@@ -585,7 +607,15 @@ class _GameScreenState extends State<GameScreen> {
             isFinalReview: pendingGameOver,
             onNext: () {
               Navigator.pop(context);
-              moveToNextQuestion();
+
+              Future.delayed(
+                const Duration(milliseconds: 150),
+                    () {
+                  if (mounted) {
+                    moveToNextQuestion();
+                  }
+                },
+              );
             },
           ),
         );
@@ -612,7 +642,56 @@ class _GameScreenState extends State<GameScreen> {
     if (pendingGameOver) {
       pendingGameOver = false;
 
-      showGameOverDialog();
+      gameController.updateHighScore();
+
+      AudioManager.playGameOverSound();
+
+      Navigator.push(
+
+        context,
+        MaterialPageRoute(
+          builder: (_) => GameOverScreen(
+            score: gameController.score,
+            highScore: gameController.highScore,
+            questionsAnswered: gameController.questionsAnswered,
+            correctAnswers: gameController.correctAnswers,
+            accuracy: gameController.accuracyPercentage,
+
+            onPlayAgain: () {
+              Navigator.pop(context);
+
+              isTimerPaused = true;
+
+              AdManager.showInterstitialAd(
+                onAdClosed: () {
+                  if (!mounted) return;
+
+                  isTimerPaused = false;
+                },
+              );
+
+              setState(() {
+                questions.shuffle();
+                currentQuestionIndex = 0;
+
+                gameController.resetGame();
+
+                timeRemaining = 10;
+                pendingGameOver = false;
+              });
+
+              startTimer();
+            },
+
+            onBackToCategories: () {
+              Navigator.pop(context); // Close GameOverScreen
+              Navigator.pop(context); // Return HomeScreen
+              AdManager.showInterstitialAd();
+            },
+          ),
+        ),
+      );
+
       return;
     }
 
@@ -628,7 +707,54 @@ class _GameScreenState extends State<GameScreen> {
 
       startTimer();
     } else {
-      showQuizCompletedDialog();
+
+      gameController.updateHighScore();
+
+      AudioManager.playVictorySound();
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => QuizCompletedScreen(
+            score: gameController.score,
+            highScore: gameController.highScore,
+            questionsAnswered: gameController.questionsAnswered,
+            correctAnswers: gameController.correctAnswers,
+            accuracy: gameController.accuracyPercentage,
+
+            onPlayAgain: () {
+              Navigator.pop(context);
+
+              isTimerPaused = true;
+
+              AdManager.showInterstitialAd(
+                onAdClosed: () {
+                  if (!mounted) return;
+
+                  isTimerPaused = false;
+
+                  setState(() {
+                    questions.shuffle();
+                    currentQuestionIndex = 0;
+
+                    gameController.resetGame();
+
+                    timeRemaining = 10;
+                  });
+
+                  startTimer();
+                },
+              );
+            },
+
+            onBackToCategories: () {
+              Navigator.pop(context); // Close QuizCompletedScreen
+              Navigator.pop(context); // Return HomeScreen
+              AdManager.showInterstitialAd();
+            },
+          ),
+        ),
+      );
     }
   }
 
@@ -636,165 +762,6 @@ class _GameScreenState extends State<GameScreen> {
   // GAME OVER
   // =========================================
 
-  void showGameOverDialog() {
-        gameController.updateHighScore();
-        AudioManager.playGameOverSound();
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Game Over'),
-          // =============================================================
-// START: Game Over Statistics
-//
-// Purpose:
-// Display a detailed summary of the player's
-// performance.
-//
-// =============================================================
-
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-              Text(
-                '🏆 Final Score : ${gameController.score}',
-              ),
-
-              const SizedBox(height: 8),
-
-              Text(
-                '⭐ High Score : ${gameController.highScore}',
-              ),
-
-              const SizedBox(height: 8),
-
-              Text(
-                '❓ Questions : ${gameController.questionsAnswered}',
-              ),
-
-              const SizedBox(height: 8),
-
-              Text(
-                '✅ Correct : ${gameController.correctAnswers}',
-              ),
-
-              const SizedBox(height: 8),
-
-              Text(
-                '📊 Accuracy : ${gameController.accuracyPercentage.toStringAsFixed(1)}%',
-              ),
-            ],
-          ),
-
-// =============================================================
-// END: Game Over Statistics
-// =============================================================
-
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-
-                setState(() {
-                  questions.shuffle();
-                  currentQuestionIndex = 0;
-                  showReviewCard = false;
-
-                  gameController.score = 0;
-                  gameController.lives = 3;
-                  timeRemaining = 10;
-                  // =============================================================
-// =============================================================
-// START: Reset Complete Game State
-//
-// Purpose:
-// Reset the game for a brand-new session.
-//
-// All gameplay state is reset by the
-// GameController.
-//
-// =============================================================
-
-                  gameController.resetGame();
-
-                  pendingGameOver = false;
-
-// =============================================================
-// END: Reset Complete Game State
-// =============================================================
-                });
-
-                startTimer();
-              },
-              child: const Text('Play Again'),
-            ),
-
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close dialog
-                Navigator.pop(context); // Back to Categories
-              },
-              child: const Text('Back to Categories'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // =========================================
-  // QUIZ COMPLETE
-  // =========================================
-
-  void showQuizCompletedDialog() {
-    gameController.updateHighScore();
-    if (lastAnswerCorrect) {
-      AudioManager.playVictorySound();
-    }
-        showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Quiz Complete!'),
-          content: Text(
-            'Final Score: ${gameController.score}',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-
-                setState(() {
-                  questions.shuffle();
-                  currentQuestionIndex = 0;
-                  showReviewCard = false;
-
-                  gameController.score = 0;
-                  gameController.lives = 3;
-                  timeRemaining = 10; // or 7 if you changed the quiz timer to 7 seconds
-                });
-
-                startTimer();
-              },
-              child: const Text('Play Again'),
-            ),
-
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close dialog
-                Navigator.pop(context); // Return to Category Screen
-              },
-              child: const Text('Back to Categories'),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   // =========================================
   // BUILD HEARTS
@@ -855,7 +822,11 @@ class _GameScreenState extends State<GameScreen> {
   // =========================================
 
   @override
+  @override
   Widget build(BuildContext context) {
+
+    gameScreenContext = context;
+
     return Scaffold(
       backgroundColor: getCategoryButtonBackground(
         questions[currentQuestionIndex].category,

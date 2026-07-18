@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../utils/category_theme.dart';
 import 'settings_screen.dart';
@@ -44,8 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    print("HomeScreen initState");
-    AudioManager.playIntroMusic();
+        AudioManager.playIntroMusic();
   }
 
 // =============================================================
