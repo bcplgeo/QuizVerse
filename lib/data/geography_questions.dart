@@ -1106,7 +1106,416 @@ final List<Question> geographyQuestions = [
     explanation: 'China shares land borders with 14 countries.',
     whyItMatters: "This ties it with Russia by some definitions, but Russia's count is typically 14 as well; China is the standard GK answer.",
     difficulty: 'Hard',
-  )
+  ),
+
+  // =========================================
+  // START: 25 NEW QUESTIONS — GEOGRAPHY
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which imaginary line is at 0 degrees latitude?',
+    options: [
+      'Equator',
+      'Prime Meridian',
+      'Tropic of Cancer',
+      'Arctic Circle',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Equator divides Earth into the Northern and Southern Hemispheres.',
+    whyItMatters: 'Latitude helps locate places and describe climate zones.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which country contains the Atacama Desert?',
+    options: [
+      'Chile',
+      'Egypt',
+      'Australia',
+      'Mongolia',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Atacama Desert lies mainly in northern Chile.',
+    whyItMatters: 'Its extreme aridity makes it important for desert and climate research.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the name of the strait separating Spain from Morocco?',
+    options: [
+      'Strait of Gibraltar',
+      'Bering Strait',
+      'Strait of Malacca',
+      'Davis Strait',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Strait of Gibraltar connects the Atlantic Ocean and Mediterranean Sea between Europe and Africa.',
+    whyItMatters: 'Straits can be major transport and strategic corridors.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 04 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which Indian state has the longest coastline among Indian states?',
+    options: [
+      'Gujarat',
+      'Goa',
+      'Kerala',
+      'Odisha',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Gujarat has the longest coastline among India\'s states, based on commonly cited state coastline measurements.',
+    whyItMatters: 'Coastline geography affects ports, fisheries and coastal planning.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 05 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which river flows through Baghdad?',
+    options: [
+      'Tigris',
+      'Danube',
+      'Rhine',
+      'Volga',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Baghdad lies on the Tigris River.',
+    whyItMatters: 'Rivers have shaped settlement, agriculture and trade across history.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the capital of New Zealand?',
+    options: [
+      'Wellington',
+      'Auckland',
+      'Christchurch',
+      'Hamilton',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Wellington is New Zealand\'s capital city.',
+    whyItMatters: 'Capital-city knowledge helps with global geography and civics.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 07 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which mountain range forms a natural boundary between France and Spain?',
+    options: [
+      'Pyrenees',
+      'Alps',
+      'Carpathians',
+      'Apennines',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Pyrenees extend along much of the France–Spain border.',
+    whyItMatters: 'Mountain ranges influence climate, transport and political boundaries.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the main reason the Dead Sea is exceptionally salty?',
+    options: [
+      'Very high evaporation and limited outflow',
+      'It is connected directly to the open ocean',
+      'It receives no minerals',
+      'It freezes every winter',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Dead Sea is a terminal lake in an arid region; evaporation concentrates dissolved salts.',
+    whyItMatters: 'Salinity shapes its ecology and water balance.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 09 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which African lake is a major source region for the White Nile?',
+    options: [
+      'Lake Victoria',
+      'Lake Chad',
+      'Lake Malawi',
+      'Lake Turkana',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The White Nile\'s headwaters are associated with the Lake Victoria basin and its outflow system.',
+    whyItMatters: 'Lake basins are important to regional water resources.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 10 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which country is completely surrounded by South Africa?',
+    options: [
+      'Lesotho',
+      'Botswana',
+      'Namibia',
+      'Eswatini',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Lesotho is an enclave entirely surrounded by South Africa.',
+    whyItMatters: 'Enclaves are useful examples of political geography.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 11 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What type of boundary is formed where two tectonic plates move apart?',
+    options: [
+      'Divergent boundary',
+      'Convergent boundary',
+      'Transform boundary',
+      'Stationary boundary',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'At divergent boundaries, plates move away from each other and new crust can form.',
+    whyItMatters: 'Plate boundaries explain earthquakes, volcanism and seafloor spreading.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which is the largest island in the Mediterranean Sea?',
+    options: [
+      'Sicily',
+      'Cyprus',
+      'Crete',
+      'Corsica',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Sicily is the largest island in the Mediterranean Sea.',
+    whyItMatters: 'Island geography influences settlement, transport and regional culture.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 13 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which ocean borders the east coast of Africa?',
+    options: [
+      'Indian Ocean',
+      'Pacific Ocean',
+      'Arctic Ocean',
+      'Southern Ocean only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Indian Ocean lies along Africa\'s eastern coastline.',
+    whyItMatters: 'Ocean access shapes trade routes and coastal climates.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 14 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which river forms much of the border between the United States and Mexico?',
+    options: [
+      'Rio Grande',
+      'Colorado River throughout its course',
+      'Mississippi River',
+      'Columbia River',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Rio Grande forms a substantial part of the US–Mexico boundary.',
+    whyItMatters: 'Rivers can serve as political boundaries and shared water resources.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 15 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which map projection preserves local angles and shapes but distorts area at high latitudes?',
+    options: [
+      'Mercator projection',
+      'Gall–Peters projection',
+      'Robinson projection',
+      'Azimuthal equal-area projection',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Mercator projection is conformal but greatly enlarges the apparent area of high-latitude regions.',
+    whyItMatters: 'Understanding projection trade-offs prevents misleading map comparisons.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 16 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the term for land drained by a river and its tributaries?',
+    options: [
+      'Drainage basin',
+      'Peninsula',
+      'Watershed divide only',
+      'Delta',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A drainage basin is the area from which water drains to a common outlet.',
+    whyItMatters: 'Basin boundaries matter for flood planning and water management.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 17 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which Indian state is home to the Sundarbans mangrove region shared with Bangladesh?',
+    options: [
+      'West Bengal',
+      'Punjab',
+      'Rajasthan',
+      'Himachal Pradesh',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Indian part of the Sundarbans lies in West Bengal, with the wider mangrove region extending into Bangladesh.',
+    whyItMatters: 'The region is important for biodiversity and coastal protection.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 18 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is a fjord?',
+    options: [
+      'A deep, narrow sea inlet carved by glaciers',
+      'A wind-formed sand dune',
+      'A volcanic plateau',
+      'A seasonal inland lake',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Fjords are long, steep-sided inlets formed when glaciers carve valleys that are later flooded by the sea.',
+    whyItMatters: 'They are characteristic of glaciated coasts such as Norway\'s.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 19 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which country has the city of Timbuktu?',
+    options: [
+      'Mali',
+      'Niger',
+      'Chad',
+      'Senegal',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Timbuktu is a historic city in Mali.',
+    whyItMatters: 'It was a major centre of trans-Saharan trade and scholarship.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 20 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which region is commonly called the Horn of Africa?',
+    options: [
+      'The eastern African projection including Somalia and neighbouring countries',
+      'The southern tip of South America',
+      'The western edge of Europe',
+      'The islands of the Caribbean',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Horn of Africa commonly refers to the eastern projection of Africa, including Somalia, Ethiopia, Eritrea and Djibouti.',
+    whyItMatters: 'Regional geography helps explain trade, climate and political connections.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 21 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the main cause of seasonal monsoon winds in South Asia?',
+    options: [
+      'Seasonal differences in heating and pressure between land and ocean',
+      'Earth\'s magnetic field',
+      'Daily ocean tides',
+      'The phases of the Moon',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Seasonal heating contrasts between land and sea contribute to pressure changes and monsoon circulation, alongside broader atmospheric dynamics.',
+    whyItMatters: 'Monsoons strongly influence agriculture and water availability.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 22 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which country is crossed by both the Equator and the Tropic of Capricorn?',
+    options: [
+      'Brazil',
+      'India',
+      'Egypt',
+      'Japan',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Brazil is crossed by the Equator in the north and the Tropic of Capricorn in its southern portion.',
+    whyItMatters: 'Lines of latitude help locate climate zones and countries.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 23 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the world\'s largest hot desert?',
+    options: [
+      'Sahara',
+      'Gobi',
+      'Kalahari',
+      'Great Victoria Desert',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Sahara is the largest hot desert; Antarctica is larger if polar deserts are included.',
+    whyItMatters: 'Desert classification matters when comparing global environments.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 24 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'Which sea lies between the Arabian Peninsula and northeastern Africa?',
+    options: [
+      'Red Sea',
+      'Baltic Sea',
+      'Caribbean Sea',
+      'Sea of Japan',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Red Sea separates the Arabian Peninsula from northeastern Africa.',
+    whyItMatters: 'It is a major maritime corridor connecting to the Suez Canal.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 25 of 25 — Geography
+  Question(
+    category: 'Geography',
+    questionText: 'What is the term for a line on a map connecting points of equal elevation?',
+    options: [
+      'Contour line',
+      'Isobar',
+      'Isotherm',
+      'Meridian',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Contour lines join points with the same elevation above a reference level.',
+    whyItMatters: 'They help interpret terrain and plan routes or construction.',
+    difficulty: 'Medium',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — GEOGRAPHY
+  // =========================================
 
 ];
 

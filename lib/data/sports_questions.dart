@@ -1754,7 +1754,416 @@ Question(
     'It is one of the world’s most famous horse racing events.',
 
     difficulty: 'Hard',
-  )
+  ),
+
+  // =========================================
+  // START: 25 NEW QUESTIONS — SPORTS
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In basketball, how many points is a successful free throw worth?',
+    options: [
+      '1',
+      '2',
+      '3',
+      '4',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A made free throw is worth one point.',
+    whyItMatters: 'Knowing scoring rules helps players and spectators follow the game.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In cricket, how many legal deliveries are in a standard over in international cricket?',
+    options: [
+      '6',
+      '4',
+      '5',
+      '8',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A standard over consists of six legal deliveries, excluding wides and no-balls from the count.',
+    whyItMatters: 'Overs are a basic unit for tracking innings and bowling workload.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which sport uses the terms \'love\', \'deuce\' and \'advantage\'?',
+    options: [
+      'Tennis',
+      'Hockey',
+      'Volleyball',
+      'Badminton',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'These are traditional terms used in tennis scoring.',
+    whyItMatters: 'Scoring vocabulary helps spectators understand match situations.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 04 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'How many players from one team are on court at a time in standard indoor volleyball?',
+    options: [
+      '6',
+      '5',
+      '7',
+      '11',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Indoor volleyball teams have six players on court at a time.',
+    whyItMatters: 'Player positions and rotations are central to the game.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 05 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which country hosted the first modern Olympic Games in 1896?',
+    options: [
+      'Greece',
+      'France',
+      'United Kingdom',
+      'Italy',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The first modern Olympic Games were held in Athens, Greece, in 1896.',
+    whyItMatters: 'The event revived an international multi-sport tradition.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In football (soccer), what is the name of the area where a goalkeeper may handle the ball?',
+    options: [
+      'Penalty area',
+      'Centre circle',
+      'Technical area',
+      'Corner arc',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A goalkeeper may handle the ball within their own penalty area, subject to the Laws of the Game.',
+    whyItMatters: 'The boundary affects important decisions during play.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 07 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which sport awards a \'try\' as a primary scoring method?',
+    options: [
+      'Rugby',
+      'Cricket',
+      'Baseball',
+      'Golf',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A try is a principal scoring method in rugby union and rugby league, with rules differing by code.',
+    whyItMatters: 'Understanding scoring terms distinguishes rugby codes.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In badminton, what is the object hit across the net called?',
+    options: [
+      'Shuttlecock',
+      'Puck',
+      'Pellet',
+      'Javelin',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Badminton players hit a shuttlecock, also called a shuttle.',
+    whyItMatters: 'Its aerodynamic design makes the game distinct from racket sports using balls.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 09 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which swimming stroke is generally performed on the back?',
+    options: [
+      'Backstroke',
+      'Butterfly',
+      'Breaststroke',
+      'Freestyle only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Backstroke is swum on the back throughout the race, under the relevant rules.',
+    whyItMatters: 'Stroke differences determine technique and event categories.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In baseball, how many strikes generally result in a batter being out?',
+    options: [
+      'Three',
+      'Two',
+      'Four',
+      'Five',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A batter is generally out after three strikes, subject to specific rule exceptions.',
+    whyItMatters: 'The strike count is a core element of baseball strategy.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 11 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'What is the standard distance of a marathon?',
+    options: [
+      '42.195 kilometres',
+      '40 kilometres',
+      '45 kilometres',
+      '50 kilometres',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The official marathon distance is 42.195 km, or 26 miles 385 yards.',
+    whyItMatters: 'It is a standardized distance in road-running events.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which sport uses a pommel horse as an apparatus?',
+    options: [
+      'Artistic gymnastics',
+      'Fencing',
+      'Weightlifting',
+      'Rowing',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The pommel horse is a men\'s artistic gymnastics apparatus.',
+    whyItMatters: 'Apparatus knowledge helps distinguish gymnastics events.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 13 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In table tennis, what is the minimum number of points needed to win a game if the score is not deuce?',
+    options: [
+      '11',
+      '15',
+      '21',
+      '25',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A standard table-tennis game is won by the first player or pair to 11 points with at least a two-point lead.',
+    whyItMatters: 'The two-point margin rule matters at close scores.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 14 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which chess piece moves in an L-shaped pattern?',
+    options: [
+      'Knight',
+      'Bishop',
+      'Rook',
+      'Queen',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The knight moves two squares in one direction and one square perpendicular to it.',
+    whyItMatters: 'Piece movement is fundamental to chess tactics and planning.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 15 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'What is the term for three goals scored by one player in a single football match?',
+    options: [
+      'Hat-trick',
+      'Triple-double',
+      'Clean sheet',
+      'Grand slam',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A hat-trick means one player scores three goals in a match in football terminology.',
+    whyItMatters: 'It is a common milestone in match reporting.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 16 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which athletics event combines running, jumping and throwing disciplines across ten events for men in the standard outdoor format?',
+    options: [
+      'Decathlon',
+      'Heptathlon',
+      'Pentathlon',
+      'Triathlon',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The decathlon comprises ten track-and-field events in the standard men\'s outdoor format.',
+    whyItMatters: 'Combined events test performance across several disciplines.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 17 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In Formula One, what does a chequered flag signal?',
+    options: [
+      'The session or race has ended',
+      'A driver must enter the pits immediately',
+      'A safety car is deployed',
+      'A penalty has been cancelled',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The chequered flag signals the end of a race or session.',
+    whyItMatters: 'Flag signals are essential for race control and driver safety.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 18 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which sport is associated with the Davis Cup?',
+    options: [
+      'Men\'s international team tennis',
+      'International rugby union',
+      'Professional golf',
+      'Men\'s basketball',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Davis Cup is an international men\'s team tennis competition.',
+    whyItMatters: 'Team formats differ from individual tennis tournaments.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 19 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In golf, what is a score of one stroke under par on a hole called?',
+    options: [
+      'Birdie',
+      'Bogey',
+      'Eagle',
+      'Albatross',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A birdie is one stroke under par on a hole.',
+    whyItMatters: 'Golf scoring terms summarize performance relative to par.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 20 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which martial art originated in Japan and emphasizes throws and grappling?',
+    options: [
+      'Judo',
+      'Taekwondo',
+      'Muay Thai',
+      'Capoeira',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Judo developed in Japan and emphasizes throws, pins and other grappling techniques.',
+    whyItMatters: 'Its rules reward control and effective technique.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 21 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'How many events are contested in a standard modern Olympic triathlon?',
+    options: [
+      'Three: swimming, cycling and running',
+      'Two: running and cycling',
+      'Four: swimming, cycling, rowing and running',
+      'Five: running, jumping, swimming, cycling and shooting',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Triathlon combines swimming, cycling and running in sequence.',
+    whyItMatters: 'It tests endurance across three disciplines.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 22 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In cricket, what does LBW stand for?',
+    options: [
+      'Leg before wicket',
+      'Long boundary wide',
+      'Left bat warning',
+      'Last ball wicket',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'LBW is a dismissal in which the batter\'s body obstructs a ball that would otherwise meet specified wicket-impact conditions.',
+    whyItMatters: 'The rule is a distinctive part of cricket law.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 23 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which sport features a \'scrum\' as a method of restarting play?',
+    options: [
+      'Rugby union',
+      'Basketball',
+      'Tennis',
+      'Baseball',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A scrum restarts play in rugby union after certain stoppages, with players binding together to contest the ball.',
+    whyItMatters: 'Set-piece rules shape rugby tactics and safety.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'In fencing, which weapon has a valid target area limited mainly to the torso and uses right-of-way rules?',
+    options: [
+      'Foil',
+      'Épée',
+      'Sabre without restrictions',
+      'Kendo shinai',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Foil targets the torso and uses right-of-way conventions; weapon rules differ across foil, épée and sabre.',
+    whyItMatters: 'Weapon-specific rules are essential to scoring and officiating.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 25 of 25 — Sports
+  Question(
+    category: 'Sports',
+    questionText: 'Which Indian sportsperson won India\'s first individual Olympic gold medal?',
+    options: [
+      'Abhinav Bindra',
+      'Neeraj Chopra',
+      'Leander Paes',
+      'Rajyavardhan Singh Rathore',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Abhinav Bindra won the men\'s 10-metre air rifle gold at the 2008 Beijing Olympics, India\'s first individual Olympic gold.',
+    whyItMatters: 'The achievement was a milestone in India\'s Olympic history.',
+    difficulty: 'Medium',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — SPORTS
+  // =========================================
 
 ];
 

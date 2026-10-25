@@ -2409,6 +2409,415 @@ Question(
   difficulty: 'Hard',
 ),
 
+  // =========================================
+  // START: 25 NEW QUESTIONS — ENVIRONMENT
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which process allows plants to absorb carbon dioxide from the atmosphere?',
+    options: [
+      'Photosynthesis',
+      'Respiration only',
+      'Condensation',
+      'Fermentation',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'During photosynthesis, plants take in carbon dioxide and use light energy to make sugars.',
+    whyItMatters: 'It explains one way ecosystems remove carbon from the air.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is the main purpose of a wildlife corridor?',
+    options: [
+      'To connect separated habitats',
+      'To prevent all forest fires',
+      'To create new deserts',
+      'To replace national parks',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Wildlife corridors link habitat patches so animals can move between them.',
+    whyItMatters: 'Connected habitats can support migration and genetic diversity.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which gas is most directly associated with ozone depletion in the stratosphere?',
+    options: [
+      'Chlorofluorocarbons (CFCs)',
+      'Oxygen',
+      'Argon',
+      'Helium',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'CFCs can release chlorine in the stratosphere, which catalytically destroys ozone.',
+    whyItMatters: 'The ozone layer helps reduce harmful ultraviolet radiation reaching Earth.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 04 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What does the term \'biodiversity\' include?',
+    options: [
+      'Variation among genes, species and ecosystems',
+      'Only the number of mammals',
+      'Only forest area',
+      'Only domesticated plants',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Biodiversity includes genetic diversity, species diversity and ecosystem diversity.',
+    whyItMatters: 'It helps describe ecosystem variety and resilience.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 05 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which energy source is renewable on human timescales?',
+    options: [
+      'Solar energy',
+      'Coal',
+      'Petroleum',
+      'Natural gas',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Solar energy is replenished continuously by sunlight.',
+    whyItMatters: 'Renewable energy can reduce dependence on finite fossil fuels.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is eutrophication in a lake commonly caused by?',
+    options: [
+      'Excess nutrient inputs',
+      'A lack of all minerals',
+      'Too much dissolved oxygen',
+      'The absence of sunlight alone',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Excess nitrogen and phosphorus can trigger algal growth and oxygen depletion.',
+    whyItMatters: 'It can damage aquatic life and drinking-water quality.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 07 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which layer of the atmosphere contains most of the ozone layer?',
+    options: [
+      'Stratosphere',
+      'Troposphere',
+      'Mesosphere',
+      'Exosphere',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Most atmospheric ozone is concentrated in the stratosphere.',
+    whyItMatters: 'This layer absorbs much of the Sun\'s harmful ultraviolet radiation.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What does \'carbon sequestration\' mean?',
+    options: [
+      'Capturing and storing carbon',
+      'Burning all organic matter',
+      'Measuring wind speed',
+      'Removing oxygen from water',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Carbon sequestration is the capture and long-term storage of carbon dioxide or carbon.',
+    whyItMatters: 'It is one approach used to limit net greenhouse-gas accumulation.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 09 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which practice most directly reduces food waste at household level?',
+    options: [
+      'Planning meals and storing food properly',
+      'Buying more than needed',
+      'Discarding food at its best-before date automatically',
+      'Leaving refrigerated food unrefrigerated',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Planning and proper storage help prevent edible food from spoiling unused.',
+    whyItMatters: 'Reducing food waste also avoids wasting the resources used to produce it.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is a keystone species?',
+    options: [
+      'A species with a disproportionately large ecological effect',
+      'The most numerous species in every habitat',
+      'Any invasive species',
+      'A species that lives only on rocks',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A keystone species has an ecological influence larger than its abundance alone would suggest.',
+    whyItMatters: 'Its loss can cause substantial changes in community structure.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 11 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which indicator is commonly used to assess the acidity or alkalinity of water?',
+    options: [
+      'pH',
+      'Decibels',
+      'Lumens',
+      'Kilowatts',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'pH indicates how acidic or alkaline a solution is.',
+    whyItMatters: 'Water pH affects aquatic organisms and chemical availability.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is the main environmental concern associated with microplastics?',
+    options: [
+      'Their persistence and ingestion by organisms',
+      'Their rapid conversion into oxygen',
+      'Their ability to make all water sterile',
+      'Their role as a renewable fuel',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Microplastics persist in the environment and can be ingested by organisms; impacts vary by context.',
+    whyItMatters: 'Monitoring them helps assess plastic pollution pathways.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 13 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which land-management practice helps reduce soil erosion on slopes?',
+    options: [
+      'Contour farming',
+      'Removing all ground cover',
+      'Ploughing straight downhill',
+      'Burning crop residues every season',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Contour farming follows the natural elevation lines and can slow runoff.',
+    whyItMatters: 'Slower runoff helps keep topsoil in place.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 14 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is the primary function of a wetland in flood management?',
+    options: [
+      'Store and slow excess water',
+      'Generate earthquakes',
+      'Stop all rainfall',
+      'Convert saltwater into oil',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Wetlands can temporarily store floodwater and slow its movement downstream.',
+    whyItMatters: 'This can reduce flood peaks, although effectiveness depends on site conditions.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 15 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which of these is a non-point source of water pollution?',
+    options: [
+      'Runoff from many farms and streets',
+      'A single discharge pipe',
+      'A clearly identified factory outlet',
+      'A wastewater pipe from one facility',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Non-point pollution comes from diffuse sources such as runoff over broad areas.',
+    whyItMatters: 'It often requires watershed-wide management rather than one discharge control.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 16 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What does the \'3Rs\' waste hierarchy traditionally stand for?',
+    options: [
+      'Reduce, reuse, recycle',
+      'Repair, remove, return',
+      'React, refine, release',
+      'Recover, replace, rebuild',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The 3Rs prioritize reducing consumption, reusing items and recycling materials.',
+    whyItMatters: 'Reducing waste at source generally avoids more impacts than managing it later.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 17 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which type of ecosystem is typically characterized by permanently frozen subsoil?',
+    options: [
+      'Tundra with permafrost',
+      'Tropical rainforest',
+      'Coral reef',
+      'Savanna',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Permafrost is ground that remains at or below 0°C for at least two consecutive years.',
+    whyItMatters: 'Thawing permafrost can affect infrastructure and release stored carbon.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 18 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is an invasive alien species?',
+    options: [
+      'A non-native species that spreads and causes harm',
+      'Any species found in a national park',
+      'A species that is naturally rare',
+      'Any animal that migrates seasonally',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Invasive alien species are introduced outside their native range and cause ecological, economic or health harm.',
+    whyItMatters: 'Early detection can make management more effective.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 19 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which measurement is most directly used to quantify sound intensity level?',
+    options: [
+      'Decibel',
+      'Pascal-second',
+      'Litre',
+      'Hectare',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Sound levels are commonly expressed in decibels (dB).',
+    whyItMatters: 'Excessive noise can affect hearing and wellbeing.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 20 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is a life-cycle assessment (LCA) designed to evaluate?',
+    options: [
+      'Environmental impacts across a product\'s life stages',
+      'Only the product\'s retail price',
+      'Only factory electricity use',
+      'Only packaging colour',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'LCA examines impacts from defined life-cycle stages, often from raw materials through disposal.',
+    whyItMatters: 'It can reveal trade-offs hidden by looking at just one stage.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 21 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which action generally supports pollinator populations in gardens?',
+    options: [
+      'Planting diverse native flowering plants',
+      'Applying broad-spectrum insecticides routinely',
+      'Removing all flowering weeds and shrubs',
+      'Keeping soil permanently bare',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Diverse flowering plants provide nectar and pollen across seasons; native plants often support local pollinators well.',
+    whyItMatters: 'Pollinators support reproduction of many wild plants and crops.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 22 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is ocean acidification mainly driven by?',
+    options: [
+      'Seawater absorbing atmospheric carbon dioxide',
+      'Sea ice reflecting sunlight',
+      'Rivers carrying sand',
+      'Evaporation removing salt',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Dissolved carbon dioxide forms carbonic acid and changes seawater carbonate chemistry.',
+    whyItMatters: 'This can make shell and skeleton formation harder for some organisms.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 23 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'What is the main aim of ecological restoration?',
+    options: [
+      'Assist recovery of a degraded ecosystem',
+      'Convert every habitat to farmland',
+      'Remove all native species',
+      'Maximize short-term extraction',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Ecological restoration assists the recovery of ecosystem structure, function and native biodiversity.',
+    whyItMatters: 'Healthy ecosystems provide habitat and other benefits to people.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Which pollutant is a major contributor to acid rain when oxidized in the atmosphere?',
+    options: [
+      'Sulfur dioxide',
+      'Neon',
+      'Hydrogen',
+      'Methane alone',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Sulfur dioxide can be transformed into sulfuric acid in the atmosphere; nitrogen oxides also contribute to acid deposition.',
+    whyItMatters: 'Controlling emissions helps protect soils, waters and buildings.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 25 of 25 — Environment
+  Question(
+    category: 'Environment',
+    questionText: 'Why are mangrove forests important along tropical coasts?',
+    options: [
+      'They provide habitat and can reduce wave energy and erosion',
+      'They prevent every cyclone',
+      'They make coastal water permanently fresh',
+      'They stop sea-level rise',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Mangroves provide nursery habitat and can attenuate waves and stabilize shorelines in suitable settings.',
+    whyItMatters: 'Their conservation can benefit biodiversity and coastal communities.',
+    difficulty: 'Medium',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — ENVIRONMENT
+  // =========================================
+
 ];
 
 // =========================================

@@ -1141,7 +1141,416 @@ Question(
   explanation: 'Nehru served from 1947.',
   whyItMatters: "He shaped modern India's early policies.",
   difficulty:  'Easy',
-)
+),
+
+  // =========================================
+  // START: 25 NEW QUESTIONS — HISTORY
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which ancient civilization developed cuneiform writing in Mesopotamia?',
+    options: [
+      'Sumerians',
+      'Minoans',
+      'Incas',
+      'Aztecs',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Sumerian city-states used cuneiform, one of the earliest known writing systems.',
+    whyItMatters: 'Writing enabled record-keeping, administration and literature.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'The Magna Carta was sealed in England in which year?',
+    options: [
+      '1215',
+      '1066',
+      '1492',
+      '1649',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'King John sealed Magna Carta in 1215.',
+    whyItMatters: 'It became an important reference point in the development of limits on royal authority.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 03 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which empire built the road network known as the Royal Road in ancient Persia?',
+    options: [
+      'Achaemenid Empire',
+      'Roman Empire',
+      'Mongol Empire',
+      'Maurya Empire',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Achaemenid Persian Empire developed the Royal Road to facilitate communication and administration.',
+    whyItMatters: 'Infrastructure helped large empires govern distant territories.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 04 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Who was the first woman to win a Nobel Prize?',
+    options: [
+      'Marie Curie',
+      'Bertha von Suttner',
+      'Jane Addams',
+      'Selma Lagerlöf',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Marie Curie received the Nobel Prize in Physics in 1903, shared with Pierre Curie and Henri Becquerel.',
+    whyItMatters: 'Her work helped establish modern research on radioactivity.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 05 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which city was divided by a wall from 1961 until 1989?',
+    options: [
+      'Berlin',
+      'Vienna',
+      'Prague',
+      'Budapest',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Berlin Wall separated East and West Berlin during the Cold War.',
+    whyItMatters: 'Its fall became a symbol of the end of the Cold War division in Europe.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'The Meiji Restoration began in Japan in which year?',
+    options: [
+      '1868',
+      '1603',
+      '1776',
+      '1912',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Meiji Restoration began in 1868 and accelerated political and social transformation in Japan.',
+    whyItMatters: 'It reshaped Japan\'s state, economy and international position.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 07 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which Indian emperor issued edicts promoting dhamma after the Kalinga War?',
+    options: [
+      'Ashoka',
+      'Chandragupta II',
+      'Harsha',
+      'Kanishka',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Ashoka\'s inscriptions communicate his policies and ideas about dhamma after the Kalinga campaign.',
+    whyItMatters: 'Inscriptions provide direct evidence for ancient political history.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'The Rosetta Stone was crucial in deciphering which writing system?',
+    options: [
+      'Egyptian hieroglyphs',
+      'Linear B only',
+      'Cuneiform only',
+      'Indus script',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Its parallel texts helped scholars, especially Jean-François Champollion, decipher Egyptian hieroglyphs.',
+    whyItMatters: 'Decipherment opened access to ancient Egyptian written records.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 09 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which revolution began with the storming of the Bastille in 1789?',
+    options: [
+      'French Revolution',
+      'Russian Revolution',
+      'American Revolution',
+      'Haitian Revolution',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The storming of the Bastille on 14 July 1789 became a major symbol of the French Revolution.',
+    whyItMatters: 'The revolution transformed France\'s political and social order.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Who led the Haitian Revolution\'s early phase and became a key military leader before independence?',
+    options: [
+      'Toussaint Louverture',
+      'Simón Bolívar',
+      'José de San Martín',
+      'Francisco Pizarro',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Toussaint Louverture became a central leader in the Haitian Revolution, though Haiti declared independence after his capture and death.',
+    whyItMatters: 'The revolution challenged slavery and colonial rule.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 11 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which treaty formally ended the First World War between Germany and the Allied powers?',
+    options: [
+      'Treaty of Versailles',
+      'Treaty of Utrecht',
+      'Treaty of Tordesillas',
+      'Treaty of Paris of 1783',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Treaty of Versailles was signed in 1919 and set peace terms with Germany after World War I.',
+    whyItMatters: 'Its terms influenced interwar European politics.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 12 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which dynasty commissioned the construction of the Qutub Minar complex\'s earliest major structures?',
+    options: [
+      'Mamluk (Delhi Sultanate) dynasty',
+      'Mughal dynasty',
+      'Chola dynasty',
+      'Pala dynasty',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Qutb-ud-din Aibak began the Qutub Minar and associated mosque complex in the late 12th century under the Delhi Sultanate.',
+    whyItMatters: 'Monuments preserve evidence of political and architectural change.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 13 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which city was the capital of the Byzantine Empire?',
+    options: [
+      'Constantinople',
+      'Alexandria',
+      'Antioch',
+      'Athens',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Constantinople served as the Byzantine Empire\'s capital for most of its history.',
+    whyItMatters: 'Its location linked trade and politics between Europe and Asia.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 14 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Who was the principal author of the United States Declaration of Independence\'s first draft?',
+    options: [
+      'Thomas Jefferson',
+      'George Washington',
+      'Benjamin Franklin alone',
+      'John Adams alone',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Thomas Jefferson drafted the Declaration, with committee and congressional revisions.',
+    whyItMatters: 'The document articulated influential arguments about rights and government.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 15 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which civilization built Machu Picchu?',
+    options: [
+      'Inca',
+      'Maya',
+      'Olmec',
+      'Moche',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Machu Picchu is an Inca site in the Andes of present-day Peru.',
+    whyItMatters: 'Its architecture reveals Inca engineering and settlement practices.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 16 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'What was the main purpose of the Silk Road network?',
+    options: [
+      'Facilitate long-distance trade and cultural exchange',
+      'Connect only Roman military forts',
+      'Transport only silk from one city',
+      'Serve as a single paved road built by one ruler',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Silk Road was a network of routes carrying goods, ideas, religions and technologies across Eurasia.',
+    whyItMatters: 'Networks of exchange helped shape connected societies.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 17 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which Indian movement called for the British to leave India in 1942?',
+    options: [
+      'Quit India Movement',
+      'Swadeshi Movement of 1905',
+      'Khilafat Movement alone',
+      'Champaran Satyagraha',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Indian National Congress launched the Quit India Movement in August 1942.',
+    whyItMatters: 'It was a major mass movement in the struggle for independence.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 18 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which event is generally considered the immediate trigger for the First World War?',
+    options: [
+      'Assassination of Archduke Franz Ferdinand',
+      'Boston Tea Party',
+      'Invasion of Poland',
+      'Russian Revolution',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The assassination in Sarajevo in June 1914 triggered a crisis that escalated through alliances and mobilizations.',
+    whyItMatters: 'It illustrates how a regional crisis can expand through international commitments.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 19 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which civilization used a calendar system associated with the Long Count?',
+    options: [
+      'Maya',
+      'Sumerian',
+      'Etruscan',
+      'Harappan',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Maya used the Long Count to track extended spans of time in inscriptions and monuments.',
+    whyItMatters: 'Calendars reveal how societies organized time and recorded history.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 20 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Who was the first Mughal emperor in India?',
+    options: [
+      'Babur',
+      'Akbar',
+      'Humayun',
+      'Shah Jahan',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Babur founded Mughal rule in northern India after the First Battle of Panipat in 1526.',
+    whyItMatters: 'The Mughal period deeply influenced South Asian political and cultural history.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 21 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which agreement created the European Economic Community in 1957?',
+    options: [
+      'Treaty of Rome',
+      'Treaty of Maastricht',
+      'Treaty of Lisbon',
+      'Treaty of Tordesillas',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Treaty of Rome established the European Economic Community in 1957.',
+    whyItMatters: 'It was a key step in European economic integration.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 22 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which archaeological site is associated with the ancient city of Troy in modern-day Turkey?',
+    options: [
+      'Hisarlik',
+      'Knossos',
+      'Persepolis',
+      'Petra',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Hisarlik in northwestern Turkey is widely identified with the site of ancient Troy.',
+    whyItMatters: 'Archaeology helps compare literary traditions with material evidence.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 23 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Who was the first Secretary-General of the United Nations?',
+    options: [
+      'Trygve Lie',
+      'Dag Hammarskjöld',
+      'U Thant',
+      'Kofi Annan',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Norwegian diplomat Trygve Lie became the UN\'s first Secretary-General in 1946.',
+    whyItMatters: 'The office coordinates the organization\'s international work.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'What was the primary aim of the Indian Green Revolution in its early phase?',
+    options: [
+      'Increase food-grain production using high-yield varieties and supporting inputs',
+      'Replace all farming with industry',
+      'End irrigation',
+      'Focus exclusively on export flowers',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Green Revolution promoted high-yielding varieties, irrigation, fertilizer and related agricultural changes, especially for wheat and rice.',
+    whyItMatters: 'It increased output but also raised questions about regional and environmental trade-offs.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 25 of 25 — History
+  Question(
+    category: 'History',
+    questionText: 'Which ancient Greek historian is often called the \'Father of History\'?',
+    options: [
+      'Herodotus',
+      'Thucydides',
+      'Homer',
+      'Socrates',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Herodotus wrote an extensive account of the Greco-Persian conflicts and related peoples and places.',
+    whyItMatters: 'His work is foundational to the Western historical tradition, though it must be critically assessed.',
+    difficulty: 'Easy',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — HISTORY
+  // =========================================
 
 ];
 

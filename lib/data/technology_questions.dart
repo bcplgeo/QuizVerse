@@ -2404,6 +2404,415 @@ final List<Question> technologyQuestions = [
     '2FA greatly reduces the risk of unauthorized access, even if a password is compromised.',
 
     difficulty: 'Medium',
-  )
+  ),
+
+  // =========================================
+  // START: 25 NEW QUESTIONS — TECHNOLOGY
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does CPU stand for?',
+    options: [
+      'Central Processing Unit',
+      'Computer Power Utility',
+      'Central Program Upload',
+      'Core Peripheral Unit',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The CPU executes instructions and coordinates many computer operations.',
+    whyItMatters: 'It is a core component in general-purpose computing devices.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which protocol is commonly used to securely browse websites?',
+    options: [
+      'HTTPS',
+      'FTP without encryption',
+      'Telnet',
+      'HTTP only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'HTTPS uses HTTP over a secure transport layer, typically TLS, to protect data in transit and authenticate the server.',
+    whyItMatters: 'It helps protect credentials and other web traffic from interception.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does RAM primarily provide to a computer?',
+    options: [
+      'Temporary working memory for active tasks',
+      'Permanent archival storage only',
+      'A display signal',
+      'Power conversion',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'RAM holds data and instructions that the system is actively using; its contents are generally volatile.',
+    whyItMatters: 'Adequate memory affects multitasking and application performance.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 04 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which data structure follows the Last In, First Out principle?',
+    options: [
+      'Stack',
+      'Queue',
+      'Priority queue always',
+      'Linked list in every use',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A stack removes the most recently added item first.',
+    whyItMatters: 'Stacks are used in parsing, function calls and undo operations.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 05 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is the main purpose of DNS on the internet?',
+    options: [
+      'Translate domain names to network records such as IP addresses',
+      'Encrypt every file on a computer',
+      'Compress all images',
+      'Allocate CPU time',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'DNS resolves domain names into records, commonly including IP addresses for services.',
+    whyItMatters: 'It allows users to use readable names instead of numeric addresses.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which programming concept bundles data with methods that operate on that data?',
+    options: [
+      'Encapsulation',
+      'Compilation',
+      'Overclocking',
+      'Rasterization',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Encapsulation groups state and related operations while controlling access to internal details.',
+    whyItMatters: 'It can make software components easier to maintain and reason about.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 07 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does an API primarily define?',
+    options: [
+      'A contract for software components to communicate',
+      'A computer\'s physical screen size',
+      'A type of battery chemistry',
+      'A graphics card\'s clock speed',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'An application programming interface defines available operations and how software components interact.',
+    whyItMatters: 'APIs enable systems to integrate without sharing all internal implementation details.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which technology is commonly used to store a cryptographic hash chain across distributed participants?',
+    options: [
+      'Blockchain',
+      'Raster graphics',
+      'Bluetooth audio',
+      'Optical character recognition',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A blockchain links records cryptographically and distributes validation according to a protocol.',
+    whyItMatters: 'It can make certain histories tamper-evident, though it does not guarantee truth of inputs.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 09 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does two-factor authentication require?',
+    options: [
+      'Two distinct categories of verification evidence',
+      'Two passwords from the same list only',
+      'A password changed twice a day',
+      'Two usernames',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Two-factor authentication combines two different factor types, such as knowledge and possession.',
+    whyItMatters: 'It can reduce account takeover risk if one factor is compromised.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which computer memory type is typically non-volatile and commonly used in USB drives?',
+    options: [
+      'Flash memory',
+      'SRAM cache only',
+      'CPU registers',
+      'DRAM only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Flash memory retains data without power and is widely used in USB storage and solid-state drives.',
+    whyItMatters: 'Non-volatile storage preserves files after shutdown.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 11 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is the purpose of version control systems such as Git?',
+    options: [
+      'Track changes and support collaboration on files',
+      'Increase monitor resolution',
+      'Replace all software testing',
+      'Automatically prove code is secure',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Version control records changes over time and supports branching, merging and collaboration.',
+    whyItMatters: 'It makes software development more traceable and recoverable.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'In machine learning, what is overfitting?',
+    options: [
+      'A model learns training-specific patterns that generalize poorly',
+      'A model has no parameters',
+      'A dataset contains only images',
+      'A model never sees training data',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Overfitting occurs when a model fits training data too closely, including noise, and performs worse on unseen data.',
+    whyItMatters: 'Validation helps assess generalization beyond training examples.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 13 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which technology allows devices to exchange data over short distances using radio waves and is commonly used for wireless headphones?',
+    options: [
+      'Bluetooth',
+      'HDMI',
+      'SATA',
+      'VGA',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Bluetooth is a short-range wireless technology used by many peripherals and audio devices.',
+    whyItMatters: 'It enables cable-free connections between compatible devices.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 14 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is the main function of an operating system?',
+    options: [
+      'Manage hardware resources and provide services to applications',
+      'Design all web pages automatically',
+      'Act only as a word processor',
+      'Replace the CPU',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'An operating system manages resources such as processes, memory, storage and device access.',
+    whyItMatters: 'It provides the platform on which applications run.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 15 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which file format is designed to preserve document layout across different systems?',
+    options: [
+      'PDF',
+      'Plain TXT always',
+      'CSV',
+      'Raw binary log only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'PDF is designed to preserve document presentation across devices and software, subject to fonts and rendering.',
+    whyItMatters: 'Consistent layout is useful for sharing and printing documents.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 16 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is phishing?',
+    options: [
+      'A deceptive attempt to obtain sensitive information by impersonation',
+      'A method for cooling a processor',
+      'A legitimate data backup method',
+      'A type of monitor connector',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Phishing uses misleading messages or sites to trick people into revealing credentials or other information.',
+    whyItMatters: 'Recognizing it reduces the risk of fraud and account compromise.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 17 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does the term \'open-source software\' generally mean?',
+    options: [
+      'Source code is made available under a licence granting defined use and modification rights',
+      'The software has no bugs',
+      'The software is always free of charge and support',
+      'Anyone can change the official version without permission',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Open-source licences allow specified access, use, modification and redistribution under their terms.',
+    whyItMatters: 'Licence conditions matter when using or distributing software.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 18 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which network device forwards packets between different IP networks?',
+    options: [
+      'Router',
+      'Repeater only',
+      'Keyboard',
+      'Display adapter',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Routers forward packets between networks using routing information.',
+    whyItMatters: 'They are fundamental to connecting local networks to other networks.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 19 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is the purpose of a database index?',
+    options: [
+      'Speed up selected data lookups at the cost of storage and write overhead',
+      'Encrypt every record automatically',
+      'Replace database backups',
+      'Guarantee all queries run instantly',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Indexes can accelerate searches and joins but consume storage and may slow writes because they must be maintained.',
+    whyItMatters: 'Index design balances query performance and maintenance costs.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 20 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which principle means granting users only the permissions needed for their tasks?',
+    options: [
+      'Least privilege',
+      'Open access',
+      'Maximum trust',
+      'Security by obscurity alone',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Least privilege limits accounts and processes to the minimum permissions required.',
+    whyItMatters: 'It reduces the potential impact of compromised accounts or software.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 21 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is edge computing?',
+    options: [
+      'Processing data near where it is generated rather than only in a distant cloud',
+      'Moving every workload to one central mainframe',
+      'A method for increasing screen sharpness',
+      'A type of optical disc',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Edge computing places some processing near devices or data sources to reduce latency or bandwidth needs.',
+    whyItMatters: 'It can support time-sensitive applications and local operation.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 22 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'Which technology is used to represent scalable vector graphics in web pages?',
+    options: [
+      'SVG',
+      'JPEG only',
+      'MP3',
+      'WAV',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'SVG is an XML-based vector graphics format that can scale without pixelation in the usual way raster images do.',
+    whyItMatters: 'Vector graphics are useful for icons, diagrams and responsive interfaces.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 23 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What is a software container primarily designed to package?',
+    options: [
+      'An application and its dependencies in an isolated runtime environment',
+      'A physical server rack',
+      'Only a database password',
+      'A computer\'s power supply',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Containers package an application and dependencies while sharing the host operating-system kernel.',
+    whyItMatters: 'They help make deployments more consistent across environments.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'In cybersecurity, what is a zero-day vulnerability?',
+    options: [
+      'A flaw for which a fix or effective mitigation may not yet be available when it is exploited or disclosed',
+      'A bug that has existed for exactly zero seconds',
+      'A password with no characters',
+      'A vulnerability that affects only old printers',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A zero-day is a vulnerability that defenders have had zero days of notice to prepare a fix before relevant exploitation or disclosure; usage varies slightly by context.',
+    whyItMatters: 'It highlights the need for layered defenses and rapid response.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 25 of 25 — Technology
+  Question(
+    category: 'Technology',
+    questionText: 'What does end-to-end encryption aim to ensure?',
+    options: [
+      'Only communicating endpoints can read the message content',
+      'Every network router can read messages',
+      'Messages are always anonymous',
+      'The device cannot be infected by malware',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'End-to-end encryption is designed so that message content is readable only by the communicating endpoints, not intermediaries.',
+    whyItMatters: 'It protects content confidentiality in transit, though endpoints still require security.',
+    difficulty: 'Medium',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — TECHNOLOGY
+  // =========================================
 
 ];

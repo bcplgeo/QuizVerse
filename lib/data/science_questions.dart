@@ -2407,6 +2407,415 @@ final List<Question> scienceQuestions = [
     difficulty: 'Medium',
   ),
 
+  // =========================================
+  // START: 25 NEW QUESTIONS — SCIENCE
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the SI unit of frequency?',
+    options: [
+      'Hertz',
+      'Newton',
+      'Joule',
+      'Tesla',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'One hertz equals one cycle per second.',
+    whyItMatters: 'Frequency units are used in sound, waves and electrical systems.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 02 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which cell organelle is primarily responsible for producing ATP through aerobic respiration?',
+    options: [
+      'Mitochondrion',
+      'Ribosome',
+      'Golgi apparatus',
+      'Lysosome',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Mitochondria are major sites of ATP production during aerobic cellular respiration.',
+    whyItMatters: 'ATP supplies usable energy for many cellular processes.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the chemical symbol for potassium?',
+    options: [
+      'K',
+      'P',
+      'Po',
+      'Pt',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Potassium\'s symbol K comes from the Latin name kalium.',
+    whyItMatters: 'Chemical symbols make formulas concise and internationally consistent.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 04 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which law states that pressure of a fixed amount of gas is inversely proportional to volume at constant temperature?',
+    options: [
+      'Boyle\'s law',
+      'Charles\'s law',
+      'Ohm\'s law',
+      'Faraday\'s law',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Boyle\'s law describes the inverse pressure-volume relationship for a fixed amount of gas at constant temperature.',
+    whyItMatters: 'It helps explain gas compression and pressure changes.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 05 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the approximate speed of light in vacuum?',
+    options: [
+      '3 × 10^8 metres per second',
+      '3 × 10^5 metres per second',
+      '3 × 10^3 metres per second',
+      '3 × 10^10 kilometres per second',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The speed of light in vacuum is exactly 299,792,458 metres per second.',
+    whyItMatters: 'It is a fundamental constant used in physics and astronomy.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 06 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which blood cells are primarily responsible for clotting?',
+    options: [
+      'Platelets',
+      'Red blood cells',
+      'Neurons',
+      'Osteocytes',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Platelets help form plugs and activate processes that stop bleeding.',
+    whyItMatters: 'Clotting is essential for limiting blood loss after injury.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 07 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the pH of a neutral aqueous solution at 25°C under standard conditions?',
+    options: [
+      '7',
+      '0',
+      '14',
+      '10',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'At 25°C, a neutral aqueous solution has pH 7 because hydrogen and hydroxide ion activities are equal.',
+    whyItMatters: 'pH is used to describe acidity and alkalinity in chemistry and biology.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 08 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which subatomic particle has a negative electric charge?',
+    options: [
+      'Electron',
+      'Proton',
+      'Neutron',
+      'Neutrino always has negative charge',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Electrons carry negative elementary charge; protons are positive and neutrons are neutral.',
+    whyItMatters: 'Charge determines how particles interact electromagnetically.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 09 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the main function of DNA in most organisms?',
+    options: [
+      'Store hereditary information',
+      'Carry oxygen in blood',
+      'Digest proteins',
+      'Produce sound waves',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'DNA stores genetic instructions used in development, function and inheritance.',
+    whyItMatters: 'Genetic information underlies heredity and molecular biology.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which phenomenon causes the sky to appear blue on a clear day?',
+    options: [
+      'Rayleigh scattering of shorter wavelengths',
+      'Refraction by clouds only',
+      'Reflection from oceans',
+      'Ozone emitting blue light',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Air molecules scatter shorter visible wavelengths more strongly than longer wavelengths.',
+    whyItMatters: 'Scattering explains the colour of the daytime sky and red sunsets.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 11 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the approximate atomic number of carbon?',
+    options: [
+      '6',
+      '12',
+      '8',
+      '14',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Carbon has six protons, so its atomic number is 6.',
+    whyItMatters: 'Atomic number defines an element\'s identity.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which type of electromagnetic radiation has the shortest wavelength among these options?',
+    options: [
+      'Gamma rays',
+      'Visible light',
+      'Microwaves',
+      'Radio waves',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Gamma rays occupy the shortest-wavelength, highest-frequency end of the electromagnetic spectrum among these choices.',
+    whyItMatters: 'Wavelength and frequency determine radiation properties and applications.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 13 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the process by which a liquid changes into a gas at its surface below boiling point?',
+    options: [
+      'Evaporation',
+      'Freezing',
+      'Deposition',
+      'Sublimation',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Evaporation occurs at a liquid\'s surface and can happen below its boiling point.',
+    whyItMatters: 'It contributes to cooling and the water cycle.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 14 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which part of the human brain is especially important for balance and coordination?',
+    options: [
+      'Cerebellum',
+      'Medulla only',
+      'Hypothalamus',
+      'Amygdala',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The cerebellum contributes to coordination, timing and balance.',
+    whyItMatters: 'Its function is important for smooth and accurate movement.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 15 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the primary role of enzymes in biochemical reactions?',
+    options: [
+      'Lower activation energy',
+      'Increase the reaction\'s equilibrium constant',
+      'Become permanently consumed',
+      'Change the atoms into different elements',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Enzymes speed reactions by lowering activation energy and are not consumed overall in the reaction.',
+    whyItMatters: 'They make many biological reactions fast enough for life.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 16 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which planet has the greatest average density in the Solar System?',
+    options: [
+      'Earth',
+      'Saturn',
+      'Jupiter',
+      'Uranus',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Earth has the highest mean density among the planets.',
+    whyItMatters: 'Density helps scientists infer planetary composition and internal structure.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 17 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What does a vaccine primarily train the immune system to do?',
+    options: [
+      'Recognize a pathogen or its antigens more effectively',
+      'Destroy all bacteria in the body permanently',
+      'Replace white blood cells',
+      'Prevent every possible infection with certainty',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Vaccines expose the immune system to an antigen or instructions for producing one, helping develop immune memory.',
+    whyItMatters: 'Vaccination reduces risk or severity for targeted diseases, though protection is not absolute.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 18 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which instrument is used to measure electric potential difference?',
+    options: [
+      'Voltmeter',
+      'Ammeter',
+      'Calorimeter',
+      'Manometer',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A voltmeter measures potential difference between two points.',
+    whyItMatters: 'Voltage measurement is central to electrical testing and circuit design.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 19 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the name of the boundary around a black hole beyond which escape is impossible in classical general relativity?',
+    options: [
+      'Event horizon',
+      'Photosphere',
+      'Magnetopause',
+      'Oort boundary',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The event horizon marks the boundary beyond which signals cannot escape to distant observers.',
+    whyItMatters: 'It defines the observable boundary of a black hole.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 20 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which vitamin is synthesized in human skin under suitable ultraviolet-B exposure?',
+    options: [
+      'Vitamin D',
+      'Vitamin B12',
+      'Vitamin C',
+      'Vitamin K only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'UVB exposure enables skin synthesis of vitamin D3 from a cholesterol-derived precursor.',
+    whyItMatters: 'Vitamin D supports calcium regulation and bone health; synthesis varies with conditions.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 21 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the main reason metals conduct electricity well?',
+    options: [
+      'They have mobile charge carriers, especially delocalized electrons',
+      'Their atoms never vibrate',
+      'They contain no protons',
+      'They are always liquids',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'In metals, delocalized electrons can move through the lattice and carry charge.',
+    whyItMatters: 'This property enables wiring and electrical contacts.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 22 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which structure in a plant root primarily absorbs water and mineral ions?',
+    options: [
+      'Root hairs',
+      'Petals',
+      'Stomata',
+      'Anthers',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Root hairs increase surface area for absorption from the soil.',
+    whyItMatters: 'Efficient uptake supports plant growth and water balance.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 23 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the name of the process in which a nucleus splits into smaller nuclei?',
+    options: [
+      'Nuclear fission',
+      'Nuclear fusion',
+      'Ionization',
+      'Combustion',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Nuclear fission splits a heavy nucleus into smaller nuclei and can release energy and neutrons.',
+    whyItMatters: 'Fission is used in nuclear power and some weapons.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'Which principle explains why a ship can float when its average density is lower than water?',
+    options: [
+      'Archimedes\' principle',
+      'Pauli exclusion principle',
+      'Heisenberg uncertainty principle',
+      'Hubble\'s law',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A floating object displaces enough fluid that the buoyant force balances its weight.',
+    whyItMatters: 'Buoyancy explains flotation and is used in ship design.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 25 of 25 — Science
+  Question(
+    category: 'Science',
+    questionText: 'What is the term for the minimum energy needed to remove an electron from an isolated gaseous atom?',
+    options: [
+      'Ionization energy',
+      'Latent heat',
+      'Activation volume',
+      'Binding temperature',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Ionization energy is the energy required to remove an electron from a gaseous atom or ion in a defined state.',
+    whyItMatters: 'It helps explain periodic trends and chemical reactivity.',
+    difficulty: 'Hard',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — SCIENCE
+  // =========================================
+
 ];
 
 // =========================================

@@ -2403,7 +2403,416 @@ Question(
       'The global phase-out of CFCs has helped the ozone layer begin recovering.',
 
   difficulty: 'Medium',
-)
+),
+
+  // =========================================
+  // START: 25 NEW QUESTIONS — GENERAL KNOWLEDGE
+  // Existing questions above are preserved unchanged.
+  // =========================================
+
+  // Added question 01 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which organization issues the World Economic Outlook report?',
+    options: [
+      'International Monetary Fund (IMF)',
+      'World Health Organization',
+      'UNICEF',
+      'World Trade Organization',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The IMF publishes the World Economic Outlook, an analysis of global economic developments and projections.',
+    whyItMatters: 'It is a widely used reference for international economic trends.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 02 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the official currency of Japan?',
+    options: [
+      'Yen',
+      'Won',
+      'Yuan',
+      'Ringgit',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Japan\'s currency is the yen.',
+    whyItMatters: 'Knowing currencies is useful for travel and international commerce.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 03 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which document is commonly regarded as the supreme law of India?',
+    options: [
+      'The Constitution of India',
+      'The Indian Penal Code only',
+      'The Union Budget',
+      'The Election Manifesto',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Constitution establishes India\'s governmental framework, institutions and fundamental rights.',
+    whyItMatters: 'It is the foundational legal document of the republic.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 04 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What does UNESCO stand for?',
+    options: [
+      'United Nations Educational, Scientific and Cultural Organization',
+      'United Nations Economic Security Council Office',
+      'Universal Network for Science and Culture',
+      'United Nations Emergency Supply Coordination Office',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'UNESCO is the United Nations Educational, Scientific and Cultural Organization.',
+    whyItMatters: 'It works internationally in education, science, culture and communication.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 05 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which Indian institution is responsible for monetary policy decisions under the monetary policy framework?',
+    options: [
+      'Reserve Bank of India',
+      'NITI Aayog',
+      'Election Commission of India',
+      'Comptroller and Auditor General',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Reserve Bank of India operates monetary policy, with the policy rate decided through its Monetary Policy Committee framework.',
+    whyItMatters: 'Monetary policy influences inflation, credit and economic activity.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 06 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the SI unit of electric current?',
+    options: [
+      'Ampere',
+      'Volt',
+      'Ohm',
+      'Watt',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The ampere is the SI base unit of electric current.',
+    whyItMatters: 'Standard units make scientific measurements comparable.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 07 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which planet is known for its prominent ring system?',
+    options: [
+      'Saturn',
+      'Mars',
+      'Mercury',
+      'Venus',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Saturn has an extensive and bright ring system made mostly of ice particles with rocky material.',
+    whyItMatters: 'Planetary rings help scientists study orbital dynamics and solar-system formation.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 08 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the primary role of the International Court of Justice?',
+    options: [
+      'Settle legal disputes between states and give advisory opinions',
+      'Run national elections',
+      'Set global interest rates',
+      'Issue passports',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The ICJ is the principal judicial organ of the United Nations and hears cases between states that accept its jurisdiction.',
+    whyItMatters: 'It provides a forum for certain disputes under international law.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 09 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which Indian body conducts elections to Parliament and state legislatures?',
+    options: [
+      'Election Commission of India',
+      'Finance Commission',
+      'Union Public Service Commission',
+      'National Human Rights Commission',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Election Commission of India administers elections to Parliament, state legislatures and the offices specified in the Constitution.',
+    whyItMatters: 'Independent election administration is important to democratic processes.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 10 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What does GDP measure in its standard expenditure approach?',
+    options: [
+      'Final goods and services produced within a country\'s borders',
+      'Only government tax revenue',
+      'Only exports',
+      'The total value of all financial assets owned by citizens',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'GDP measures the value of final goods and services produced within an economy over a period.',
+    whyItMatters: 'It is a broad indicator of economic activity, not a complete measure of wellbeing.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 11 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which is the largest ocean on Earth by area?',
+    options: [
+      'Pacific Ocean',
+      'Atlantic Ocean',
+      'Indian Ocean',
+      'Arctic Ocean',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Pacific is the largest ocean by surface area.',
+    whyItMatters: 'Ocean scale matters for climate, circulation and marine ecosystems.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 12 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which Indian classical dance form is associated with Kerala and elaborate makeup?',
+    options: [
+      'Kathakali',
+      'Garba',
+      'Bhangra',
+      'Ghoomar',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Kathakali is a classical dance-drama tradition from Kerala known for elaborate costumes and makeup.',
+    whyItMatters: 'It is an important form of India\'s performing-arts heritage.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 13 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What does the abbreviation \'WHO\' refer to?',
+    options: [
+      'World Health Organization',
+      'World Heritage Office',
+      'World Housing Organization',
+      'Worldwide Health Observatory',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'WHO is the United Nations agency concerned with international public health.',
+    whyItMatters: 'It coordinates and supports public-health work across countries.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 14 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which gas is commonly used to fill many incandescent light bulbs to reduce filament evaporation?',
+    options: [
+      'Argon',
+      'Chlorine',
+      'Ozone',
+      'Ammonia',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Many incandescent lamps use an inert gas such as argon, often mixed with nitrogen, to reduce filament evaporation.',
+    whyItMatters: 'The gas helps extend filament life under operating conditions.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 15 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the main purpose of a national census?',
+    options: [
+      'Systematically count and describe a population',
+      'Measure only a country\'s exports',
+      'Set daily weather forecasts',
+      'Determine stock-market prices',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A census collects demographic and related information about a population at a defined time.',
+    whyItMatters: 'Population data supports planning for services and infrastructure.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 16 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which Indian award is presented for exceptional service in the field of sports coaching?',
+    options: [
+      'Dronacharya Award',
+      'Jnanpith Award',
+      'Dadasaheb Phalke Award',
+      'Sahitya Akademi Award',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Dronacharya Award recognizes outstanding coaches in sports and games in India.',
+    whyItMatters: 'Coaching recognition highlights contributions behind athletic performance.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 17 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the main purpose of a central bank\'s foreign-exchange reserves?',
+    options: [
+      'Help meet external obligations and support confidence and intervention capacity',
+      'Pay every household\'s electricity bill',
+      'Replace all domestic tax revenue',
+      'Set the price of every product',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Foreign-exchange reserves can support external payments, confidence and foreign-exchange market operations.',
+    whyItMatters: 'Reserve adequacy is one element of external economic resilience.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 18 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which language is primarily written using the Hangul alphabet?',
+    options: [
+      'Korean',
+      'Thai',
+      'Arabic',
+      'Greek',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Hangul is the alphabet used to write Korean.',
+    whyItMatters: 'Writing systems are a key part of linguistic and cultural identity.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 19 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is the term for a government in which power is divided between national and regional levels?',
+    options: [
+      'Federal system',
+      'Absolute monarchy',
+      'Unitary system only',
+      'Theocracy',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Federal systems constitutionally divide powers between levels of government.',
+    whyItMatters: 'This structure affects how public responsibilities are shared.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 20 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which body is responsible for setting international standards for civil aviation?',
+    options: [
+      'International Civil Aviation Organization (ICAO)',
+      'International Maritime Organization only',
+      'International Labour Organization',
+      'World Intellectual Property Organization',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'ICAO develops standards and recommended practices for international civil aviation.',
+    whyItMatters: 'Common standards help make international air travel safer and more interoperable.',
+    difficulty: 'Hard',
+  ),
+
+  // Added question 21 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What is a referendum?',
+    options: [
+      'A direct vote by eligible voters on a specific question',
+      'A court\'s written judgment',
+      'An annual financial audit',
+      'A meeting of cabinet ministers only',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A referendum lets voters decide directly on a particular proposal or question.',
+    whyItMatters: 'It is one mechanism for direct democratic participation.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 22 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which Indian city is the seat of the Supreme Court of India?',
+    options: [
+      'New Delhi',
+      'Mumbai',
+      'Kolkata',
+      'Chennai',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'The Supreme Court of India is located in New Delhi.',
+    whyItMatters: 'The location is part of India\'s national judicial structure.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 23 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What does a patent generally protect?',
+    options: [
+      'A qualifying invention for a limited period under law',
+      'Any idea without disclosure',
+      'A person\'s name in all circumstances',
+      'All facts published online',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A patent grants defined exclusive rights over a qualifying invention for a limited term, subject to law.',
+    whyItMatters: 'It can incentivize invention while requiring public disclosure.',
+    difficulty: 'Medium',
+  ),
+
+  // Added question 24 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'Which instrument measures atmospheric pressure?',
+    options: [
+      'Barometer',
+      'Hygrometer',
+      'Anemometer',
+      'Seismometer',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'A barometer measures atmospheric pressure.',
+    whyItMatters: 'Pressure measurements are used in meteorology and weather forecasting.',
+    difficulty: 'Easy',
+  ),
+
+  // Added question 25 of 25 — General Knowledge
+  Question(
+    category: 'General Knowledge',
+    questionText: 'What does \'net zero emissions\' generally mean?',
+    options: [
+      'Balancing human-caused emissions with removals over a specified period',
+      'Eliminating all natural emissions from Earth',
+      'Stopping all electricity generation',
+      'Having no emissions from any individual activity',
+    ],
+    correctAnswerIndex: 0,
+    explanation: 'Net zero means human-caused emissions are balanced by removals within a defined boundary and period.',
+    whyItMatters: 'It is a key framework for climate targets.',
+    difficulty: 'Hard',
+  ),
+
+  // =========================================
+  // END: 25 NEW QUESTIONS — GENERAL KNOWLEDGE
+  // =========================================
 
 ];
 
