@@ -277,7 +277,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SharePlus.instance.share(
                 ShareParams(
                   text:
-                  "I'm enjoying QuizVerse! 🎯\n\nChallenge yourself with fun quizzes across multiple categories.\n\nComing soon on Google Play!",
+                  "I'm enjoying QuizVerse! 🎯\n\nChallenge yourself with fun quizzes across multiple categories.\n\nNow available on Google Play!",
                 ),
               );
             },

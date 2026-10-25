@@ -48,7 +48,32 @@ class QuizVerseApp extends StatelessWidget {
 Future<void> main() async {
   // Required before using async platform services.
   WidgetsFlutterBinding.ensureInitialized();
+  // Configure Google Mobile Ads before initialization.
+// Limits ad content to G-rated ads to match QuizVerse's
+// current family-friendly content rating.
+  // Configure Google Mobile Ads for QuizVerse's mixed-age audience.
+// Child-directed treatment prevents interest-based/remarketing ads
+// from being served under the child-directed treatment.
+// G-rated filtering restricts ad content to G-rated ads.
+  final RequestConfiguration requestConfiguration =
+  RequestConfiguration(
+    tagForChildDirectedTreatment:
+    TagForChildDirectedTreatment.yes,
+    maxAdContentRating: MaxAdContentRating.g,
+  );
+
+  MobileAds.instance.updateRequestConfiguration(
+    requestConfiguration,
+  );
+
   await MobileAds.instance.initialize();
+
+  MobileAds.instance.updateRequestConfiguration(
+    requestConfiguration,
+  );
+
+  await MobileAds.instance.initialize();
+
   AdManager.loadInterstitialAd();
 
   // Load the user's saved sound preference.
