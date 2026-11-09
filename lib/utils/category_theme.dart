@@ -7,63 +7,47 @@ import 'package:flutter/material.dart';
 Color getCategoryColor(String category) {
   switch (category) {
     case 'Science':
-      return const Color(0xFF1565C0);
-
+      return const Color(0xFF58A6FF);
     case 'Indian History':
-      return const Color(0xFF6D4C41);
-
+      return const Color(0xFFC79A78);
     case 'Geography':
-      return const Color(0xFF00897B);
-
+      return const Color(0xFF42C6B5);
     case 'Sports':
-      return const Color(0xFF8E24AA);
-
+      return const Color(0xFFC18BFF);
     case 'Technology':
-      return const Color(0xFF00838F);
-
+      return const Color(0xFF45C7D4);
     case 'General Knowledge':
-      return const Color(0xFFF9A825);
-
+      return const Color(0xFFFFC66D);
     case 'Environment':
-      return const Color(0xFF2E7D32);
-
+      return const Color(0xFF80C783);
     case 'Animals & Wildlife':
-      return const Color(0xFF558B2F);
-
+      return const Color(0xFFA5C96B);
     case 'Arts, Literature & Music':
-      return const Color(0xFF8E24AA);
-
+      return const Color(0xFFD19BFF);
     case 'Business & Economics':
-      return const Color(0xFF3949AB);
-
+      return const Color(0xFF8FA8FF);
     case 'Cultures & Traditions':
-      return const Color(0xFFAD5A32);
-
+      return const Color(0xFFE0A17E);
     case 'Food & Beverage':
-      return const Color(0xFFEF6C00);
-
+      return const Color(0xFFFFAD70);
     case 'Human Body & Health':
-      return const Color(0xFFE53935);
-
+      return const Color(0xFFFF8585);
     case 'Languages & Linguistics':
-      return const Color(0xFF00838F);
-
+      return const Color(0xFF67C9C0);
     case 'Mythology & Folklore':
-      return const Color(0xFF5E35B1);
-
+      return const Color(0xFFB49AFF);
     case 'Psychology & Human Behaviour':
-      return const Color(0xFF6A1B9A);
-
+      return const Color(0xFFD39BEA);
     case 'Space & Astronomy':
-      return const Color(0xFF283593);
-
+      return const Color(0xFF9AA9FF);
     case 'Travel & Tourism':
-      return const Color(0xFF039BE5);
-
+      return const Color(0xFF73C6F2);
     case 'World History':
-      return const Color(0xFF795548);
+      return const Color(0xFFD0A58D);
+    case 'All':
+      return const Color(0xFFB69CFF);
     default:
-      return Colors.deepPurple;
+      return const Color(0xFFB69CFF);
   }
 }
 
@@ -72,66 +56,7 @@ Color getCategoryColor(String category) {
 // =========================================
 
 Color getCategoryForeground(String category) {
-  switch (category) {
-    case 'Science':
-      return const Color(0xFF0D47A1);
-
-    case 'Indian History':
-      return const Color(0xFF3E2723);
-
-    case 'Geography':
-      return const Color(0xFF004D40);
-
-    case 'Sports':
-      return const Color(0xFF4A148C);
-
-    case 'Technology':
-      return const Color(0xFF004D40);
-
-    case 'General Knowledge':
-      return const Color(0xFFE65100);
-
-    case 'Environment':
-      return const Color(0xFF1B5E20);
-
-    case 'Animals & Wildlife':
-      return const Color(0xFF33691E);
-
-    case 'Arts, Literature & Music':
-      return const Color(0xFF4A148C);
-
-    case 'Business & Economics':
-      return const Color(0xFF1A237E);
-
-    case 'Cultures & Traditions':
-      return const Color(0xFF6D321B);
-
-    case 'Food & Beverage':
-      return const Color(0xFFE65100);
-
-    case 'Human Body & Health':
-      return const Color(0xFFB71C1C);
-
-    case 'Languages & Linguistics':
-      return const Color(0xFF004D40);
-
-    case 'Mythology & Folklore':
-      return const Color(0xFF311B92);
-
-    case 'Psychology & Human Behaviour':
-      return const Color(0xFF4A148C);
-
-    case 'Space & Astronomy':
-      return const Color(0xFF1A237E);
-
-    case 'Travel & Tourism':
-      return const Color(0xFF01579B);
-
-    case 'World History':
-      return const Color(0xFF3E2723);
-    default:
-      return Colors.black87;
-  }
+  return Colors.white;
 }
 
 // =========================================
@@ -141,129 +66,59 @@ Color getCategoryForeground(String category) {
 IconData getCategoryIcon(String category) {
   switch (category) {
     case 'Science':
-      return Icons.science;
-
+      return Icons.science_outlined;
     case 'Indian History':
-      return Icons.history_edu;
-
+      return Icons.history_edu_outlined;
     case 'Geography':
-      return Icons.public;
-
+      return Icons.public_outlined;
     case 'Sports':
-      return Icons.sports_soccer;
-
+      return Icons.sports_soccer_outlined;
     case 'Technology':
-      return Icons.memory;
-
+      return Icons.memory_outlined;
     case 'General Knowledge':
-      return Icons.lightbulb;
-
+      return Icons.lightbulb_outline;
     case 'Environment':
-      return Icons.eco;
-
+      return Icons.eco_outlined;
     case 'Animals & Wildlife':
-      return Icons.pets;
-
+      return Icons.pets_outlined;
     case 'Arts, Literature & Music':
-      return Icons.palette;
-
+      return Icons.palette_outlined;
     case 'Business & Economics':
-      return Icons.business_center;
-
+      return Icons.business_center_outlined;
     case 'Cultures & Traditions':
-      return Icons.diversity_3;
-
+      return Icons.diversity_3_outlined;
     case 'Food & Beverage':
-      return Icons.restaurant;
-
+      return Icons.restaurant_outlined;
     case 'Human Body & Health':
-      return Icons.health_and_safety;
-
+      return Icons.health_and_safety_outlined;
     case 'Languages & Linguistics':
-      return Icons.translate;
-
+      return Icons.translate_outlined;
     case 'Mythology & Folklore':
-      return Icons.auto_stories;
-
+      return Icons.auto_stories_outlined;
     case 'Psychology & Human Behaviour':
-      return Icons.psychology;
-
+      return Icons.psychology_outlined;
     case 'Space & Astronomy':
-      return Icons.rocket_launch;
-
+      return Icons.rocket_launch_outlined;
     case 'Travel & Tourism':
-      return Icons.flight;
-
+      return Icons.flight_outlined;
     case 'World History':
-      return Icons.account_balance;
+      return Icons.account_balance_outlined;
+    case 'All':
+      return Icons.apps_rounded;
     default:
-      return Icons.quiz;
+      return Icons.quiz_outlined;
   }
 }
 
 // =========================================
 // CATEGORY LIGHT BACKGROUND
 // =========================================
+// Retained for compatibility with any existing screens that use this helper.
 
 Color getCategoryButtonBackground(String category) {
-  switch (category) {
-    case 'Science':
-      return const Color(0xFFD6EAF8);
-
-    case 'Indian History':
-      return const Color(0xFFE8DDD6);
-
-    case 'Geography':
-      return const Color(0xFFD2F0EC);
-
-    case 'Sports':
-      return const Color(0xFFEADCF5);
-
-    case 'Technology':
-      return const Color(0xFFD7F3F6);
-
-    case 'General Knowledge':
-      return const Color(0xFFFFF0C7);
-
-    case 'Environment':
-      return const Color(0xFFDCEFD8);
-
-    case 'Animals & Wildlife':
-      return const Color(0xFFE4EFD9);
-
-    case 'Arts, Literature & Music':
-      return const Color(0xFFF0DFF5);
-
-    case 'Business & Economics':
-      return const Color(0xFFE0E4F7);
-
-    case 'Cultures & Traditions':
-      return const Color(0xFFF4E4DA);
-
-    case 'Food & Beverage':
-      return const Color(0xFFFFE8D1);
-
-    case 'Human Body & Health':
-      return const Color(0xFFF9DEDE);
-
-    case 'Languages & Linguistics':
-      return const Color(0xFFD8EEEE);
-
-    case 'Mythology & Folklore':
-      return const Color(0xFFE7DFF5);
-
-    case 'Psychology & Human Behaviour':
-      return const Color(0xFFEEDFF2);
-
-    case 'Space & Astronomy':
-      return const Color(0xFFDDE2F5);
-
-    case 'Travel & Tourism':
-      return const Color(0xFFD9EFFA);
-
-    case 'World History':
-      return const Color(0xFFE9DFD8);
-    default:
-      return const Color(0xFFEEEEEE);
-  }
+  return getCategoryColor(category).withOpacity(0.16);
 }
+
+// =========================================
+// END OF FILE
+// =========================================
