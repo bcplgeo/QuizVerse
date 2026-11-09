@@ -181,12 +181,26 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: WrapAlignment.center,
                           children: [
                             QuizCategory.science,
-                            QuizCategory.history,
+                            QuizCategory.indianHistory,
                             QuizCategory.geography,
                             QuizCategory.sports,
                             QuizCategory.technology,
                             QuizCategory.generalKnowledge,
                             QuizCategory.environment,
+
+                            // New V3 categories.
+                            QuizCategory.animalsWildlife,
+                            QuizCategory.artsLiteratureMusic,
+                            QuizCategory.businessEconomics,
+                            QuizCategory.culturesTraditions,
+                            QuizCategory.foodBeverage,
+                            QuizCategory.humanBodyHealth,
+                            QuizCategory.languagesLinguistics,
+                            QuizCategory.mythologyFolklore,
+                            QuizCategory.psychologyHumanBehaviour,
+                            QuizCategory.spaceAstronomy,
+                            QuizCategory.travelTourism,
+                            QuizCategory.worldHistory,
                             QuizCategory.all,
                           ].map((category) {
                             return ChoiceChip(

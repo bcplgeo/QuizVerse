@@ -1,14 +1,14 @@
 import '../models/question.dart';
 
 // =========================================
-// HISTORY QUESTIONS
+// INDIAN HISTORY QUESTIONS
 // =========================================
 
 
-final List<Question> historyQuestions = [
+final List<Question> indianHistoryQuestions = [
 
   Question(
-    category: 'History',
+    category: 'Indian History',
 
     questionText: 
     'Who was the founder of the Maurya Empire?',
@@ -33,7 +33,7 @@ final List<Question> historyQuestions = [
   ),
 
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was the first Mughal emperor of India?',
     options: [
       'Babur',
@@ -48,7 +48,7 @@ final List<Question> historyQuestions = [
   ),
 
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was known as the Iron Man of India?',
     options: [
       'Sardar Vallabhbhai Patel',
@@ -63,7 +63,7 @@ final List<Question> historyQuestions = [
   ),
 
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'In which year did India gain independence?',
     options: [
       '1947',
@@ -78,7 +78,7 @@ final List<Question> historyQuestions = [
   ),
 
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who wrote the Arthashastra?',
     options: [
       'Kautilya',
@@ -93,7 +93,7 @@ final List<Question> historyQuestions = [
   ),
 
   Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which battle established British political control in Bengal?',
   options: [
     'Battle of Plassey',
@@ -108,7 +108,7 @@ final List<Question> historyQuestions = [
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the last Governor-General of independent India?',
   options: [
     'C. Rajagopalachari',
@@ -123,7 +123,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who built the Qutub Minar?',
   options: [
     'Qutb-ud-din Aibak',
@@ -138,7 +138,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was known as the Nightingale of India?',
   options: [
     'Sarojini Naidu',
@@ -153,7 +153,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which emperor embraced Buddhism after the Kalinga War?',
   options: [
     'Ashoka',
@@ -168,7 +168,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The French Revolution began in which year?',
   options: [
     '1789',
@@ -183,7 +183,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who discovered the sea route to India via the Cape of Good Hope?',
   options: [
     'Vasco da Gama',
@@ -198,7 +198,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Gupta Empire?',
   options: [
     'Chandragupta I',
@@ -213,7 +213,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which movement was launched by Mahatma Gandhi in 1942?',
   options: [
     'Quit India Movement',
@@ -228,7 +228,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first President of India?',
   options: [
     'Dr. Rajendra Prasad',
@@ -243,7 +243,7 @@ Question(
 ), 
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who defeated Prithviraj Chauhan in the Second Battle of Tarain?',
   options: [
     'Muhammad Ghori',
@@ -258,7 +258,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Slave Dynasty?',
   options: [
     'Qutb-ud-din Aibak',
@@ -273,7 +273,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Harappan site is famous for its dockyard?',
   options: [
     'Lothal',
@@ -288,7 +288,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who introduced Din-i-Ilahi?',
   options: [
     'Akbar',
@@ -303,7 +303,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the founder of the Sikh religion?',
   options: [
     'Guru Nanak',
@@ -318,7 +318,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which battle marked the end of Napoleon"s rule?',
   options: [
     'Battle of Waterloo',
@@ -333,7 +333,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who gave the slogan Give me blood, and I will give you freedom?',
   options: [
     'Subhas Chandra Bose',
@@ -348,7 +348,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Non-Cooperation Movement was launched in?',
   options: [
     '1920',
@@ -363,7 +363,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who wrote- Discovery of India?',
   options: [
     'Jawaharlal Nehru',
@@ -378,7 +378,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first woman ruler of the Delhi Sultanate?',
   options: [
     'Razia Sultan',
@@ -393,7 +393,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was called the Grand Old Man of India?',
   options: ['Dadabhai Naoroji','Gopal Krishna Gokhale','Bal Gangadhar Tilak','Lala Lajpat Rai'],
   correctAnswerIndex: 0,
@@ -403,7 +403,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Battle of Buxar was fought in?',
   options: ['1764','1757','1775','1857'],
   correctAnswerIndex: 0,
@@ -413,7 +413,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who built the Taj Mahal?',
   options: ['Shah Jahan','Akbar','Babur','Aurangzeb'],
   correctAnswerIndex: 0,
@@ -423,7 +423,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Act transferred power from the East India Company to the British Crown?',
   options: ['Government of India Act 1858','Regulating Act 1773','Pitt"s India Act','Charter Act 1833'],
   correctAnswerIndex: 0,
@@ -433,7 +433,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Indian to become Governor-General of independent India?',
   options: ['C. Rajagopalachari','Rajendra Prasad','Jawaharlal Nehru','Sardar Patel'],
   correctAnswerIndex: 0,
@@ -443,7 +443,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who composed the national song Vande Mataram?',
   options: ['Bankim Chandra Chattopadhyay','Rabindranath Tagore','Subhas Chandra Bose','Sarojini Naidu'],
   correctAnswerIndex: 0,
@@ -453,7 +453,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which empire was ruled by Krishnadevaraya?',
   options: ['Vijayanagara Empire','Maurya Empire','Gupta Empire','Mughal Empire'],
   correctAnswerIndex: 0,
@@ -463,7 +463,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Indian National Congress?',
   options: ['A. O. Hume','Dadabhai Naoroji','Tilak','Gokhale'],
   correctAnswerIndex: 0,
@@ -473,7 +473,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which ruler shifted the capital from Agra to Fatehpur Sikri?',
   options: ['Akbar','Humayun','Aurangzeb','Shah Jahan'],
   correctAnswerIndex: 0,
@@ -483,7 +483,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who abolished Sati with the help of Lord William Bentinck?',
   options: ['Raja Ram Mohan Roy','Ishwar Chandra Vidyasagar','Swami Vivekananda','Dayanand Saraswati'],
   correctAnswerIndex: 0,
@@ -493,7 +493,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Viceroy partitioned Bengal in 1905?',
   options: ['Lord Curzon','Lord Ripon','Lord Canning','Lord Irwin'],
   correctAnswerIndex: 0,
@@ -503,7 +503,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Arya Samaj?',
   options: ['Swami Dayanand Saraswati','Ramakrishna','Vivekananda','Raja Ram Mohan Roy'],
   correctAnswerIndex: 0,
@@ -513,7 +513,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was popularly known as Frontier Gandhi?',
   options: ['Khan Abdul Ghaffar Khan','Maulana Azad','Tilak','Bhagat Singh'],
   correctAnswerIndex: 0,
@@ -523,7 +523,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Simon Commission arrived in India in?',
   options: ['1928','1919','1935','1942'],
   correctAnswerIndex: 0,
@@ -533,7 +533,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which treaty ended the First World War?',
   options: ['Treaty of Versailles','Treaty of Paris','Treaty of Tordesillas','Treaty of Utrecht'],
   correctAnswerIndex: 0,
@@ -543,7 +543,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Chola Empire?',
   options: ['Vijayalaya Chola','Rajaraja Chola','Rajendra Chola','Karikala'],
   correctAnswerIndex: 0,
@@ -553,7 +553,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Indian leader gave the slogan Swaraj is my birthright?',
   options: ['Bal Gangadhar Tilak','Gandhi','Nehru','Bose'],
   correctAnswerIndex: 0,
@@ -563,7 +563,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Dandi March started in which year?',
   options: ['1930','1920','1942','1919'],
   correctAnswerIndex: 0,
@@ -573,7 +573,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the founder of the Mughal Empire?',
   options: ['Babur','Akbar','Humayun','Aurangzeb'],
   correctAnswerIndex: 0,
@@ -583,7 +583,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which civilization used the Great Bath?',
   options: ['Indus Valley Civilization','Vedic Civilization','Mauryan Empire','Gupta Empire'],
   correctAnswerIndex: 0,
@@ -593,7 +593,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Education Minister of independent India?',
   options: ['Maulana Abul Kalam Azad','Nehru','Ambedkar','Patel'],
   correctAnswerIndex: 0,
@@ -603,7 +603,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was known as the Lion of Punjab?',
   options: ['Lala Lajpat Rai','Bhagat Singh','Udham Singh','Tilak'],
   correctAnswerIndex: 0,
@@ -613,7 +613,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Revolt of 1857 began at?',
   options: ['Meerut','Delhi','Kanpur','Lucknow'],
   correctAnswerIndex: 0,
@@ -623,7 +623,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who built the Brihadeeswarar Temple?',
   options: ['Rajaraja Chola I','Rajendra Chola','Krishnadevaraya','Ashoka'],
   correctAnswerIndex: 0,
@@ -633,7 +633,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Indian woman president of the INC?',
   options: ['Sarojini Naidu','Annie Besant','Indira Gandhi','Vijaya Lakshmi Pandit'],
   correctAnswerIndex: 0,
@@ -643,7 +643,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who established the Satavahana dynasty?',
   options: ['Simuka','Gautamiputra Satakarni','Pulakeshin II','Kharavela'],
   correctAnswerIndex: 0,
@@ -653,7 +653,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who built the Sanchi Stupa?',
   options: ['Ashoka','Harsha','Bindusara','Samudragupta'],
   correctAnswerIndex: 0,
@@ -663,7 +663,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Permanent Settlement was introduced by?',
   options: ['Lord Cornwallis','Lord Curzon','Lord Dalhousie','Lord Ripon'],
   correctAnswerIndex: 0,
@@ -673,7 +673,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Brahmo Samaj?',
   options: ['Raja Ram Mohan Roy','Swami Vivekananda','Dayanand Saraswati','Ishwar Chandra Vidyasagar'],
   correctAnswerIndex: 0,
@@ -683,7 +683,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who succeeded Ashoka?',
   options: ['Dasharatha Maurya','Bindusara','Samudragupta','Harsha'],
   correctAnswerIndex: 0,
@@ -693,7 +693,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The capital of the Vijayanagara Empire was?',
   options: ['Hampi','Madurai','Mysore','Warangal'],
   correctAnswerIndex: 0,
@@ -703,7 +703,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who discovered America in 1492?',
   options: ['Christopher Columbus','Vasco da Gama','Magellan','James Cook'],
   correctAnswerIndex: 0,
@@ -713,7 +713,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who gave the call "Do or Die"?',
   options: ['Mahatma Gandhi','Subhash Chandra Bose','Tilak','Nehru'],
   correctAnswerIndex: 0,
@@ -723,7 +723,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Third Battle of Panipat was fought in?',
   options: ['1761','1526','1556','1757'],
   correctAnswerIndex: 0,
@@ -733,7 +733,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the founder of the Kushan Empire?',
   options: ['Kujula Kadphises','Kanishka','Vima Kadphises','Menander'],
   correctAnswerIndex: 0,
@@ -743,7 +743,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Mughal ruler to adopt Sulh-i-Kul?',
   options: ['Akbar','Babur','Humayun','Jahangir'],
   correctAnswerIndex: 0,
@@ -753,7 +753,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who translated the Ramayana into Persian?',
   options: ['Abdul Qadir Badauni','Abul Fazl','Faizi','Birbal'],
   correctAnswerIndex: 0,
@@ -763,7 +763,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who led the Revolt of 1857 in Jhansi?',
   options: ['Rani Lakshmibai','Begum Hazrat Mahal','Annie Besant','Sarojini Naidu'],
   correctAnswerIndex: 0,
@@ -773,7 +773,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which dynasty built the Sun Temple at Konark?',
   options: ['Eastern Ganga Dynasty','Cholas','Palas','Rashtrakutas'],
   correctAnswerIndex: 0,
@@ -783,7 +783,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Pallava dynasty?',
   options: ['Simhavishnu','Mahendravarman','Narasimhavarman','Skandavarman'],
   correctAnswerIndex: 3,
@@ -793,7 +793,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who wrote Akbarnama?',
   options: ['Abul Fazl','Badauni','Faizi','Birbal'],
   correctAnswerIndex: 0,
@@ -803,7 +803,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which movement followed the Partition of Bengal?',
   options: ['Swadeshi Movement','Quit India','Civil Disobedience','Khilafat'],
   correctAnswerIndex: 0,
@@ -813,7 +813,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Khalsa?',
   options: ['Guru Gobind Singh','Guru Nanak','Guru Arjan','Guru Angad'],
   correctAnswerIndex: 0,
@@ -823,7 +823,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The first battle of Panipat was fought in?',
   options: ['1526','1556','1761','1757'],
   correctAnswerIndex: 0,
@@ -833,7 +833,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was known as the Napoleon of India?',
   options: ['Samudragupta','Chandragupta Maurya','Harsha','Ashoka'],
   correctAnswerIndex: 0,
@@ -843,7 +843,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who introduced the Doctrine of Lapse?',
   options: ['Lord Dalhousie','Lord Wellesley','Lord Canning','Lord Curzon'],
   correctAnswerIndex: 0,
@@ -853,7 +853,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Khajuraho temples were built by the?',
   options: ['Chandelas','Cholas','Mauryas','Guptas'],
   correctAnswerIndex: 0,
@@ -863,7 +863,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was India"s first Vice President?',
   options: ['Dr. S. Radhakrishnan','Rajendra Prasad','Zakir Husain','V. V. Giri'],
   correctAnswerIndex: 0,
@@ -873,7 +873,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Maratha Empire?',
   options: ['Shivaji Maharaj','Sambhaji','Baji Rao I','Balaji Vishwanath'],
   correctAnswerIndex: 0,
@@ -883,7 +883,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who signed the Gandhi-Irwin Pact with Gandhi?',
   options: ['Lord Irwin','Lord Linlithgow','Lord Curzon','Lord Wavell'],
   correctAnswerIndex: 0,
@@ -893,7 +893,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who established the Gupta Era in 319 CE?',
   options: ['Chandragupta I','Samudragupta','Chandragupta II','Kumaragupta'],
   correctAnswerIndex: 0,
@@ -903,7 +903,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Mughal emperor built the Red Fort?',
   options: ['Shah Jahan','Akbar','Aurangzeb','Jahangir'],
   correctAnswerIndex: 0,
@@ -913,7 +913,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Bahmani Sultanate?',
   options: ['Ala-ud-Din Bahman Shah','Muhammad bin Tughlaq','Firoz Shah Tughlaq','Iltutmish'],
   correctAnswerIndex: 0,
@@ -923,7 +923,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The Jallianwala Bagh massacre occurred in?',
   options: ['1919','1920','1915','1930'],
   correctAnswerIndex: 0,
@@ -933,7 +933,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Rashtrakuta dynasty?',
   options: ['Dantidurga','Amoghavarsha','Krishna I','Govinda III'],
   correctAnswerIndex: 0,
@@ -943,7 +943,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Chola king invaded Southeast Asia?',
   options: ['Rajendra Chola I','Rajaraja Chola I','Karikala','Kulothunga I'],
   correctAnswerIndex: 0,
@@ -953,7 +953,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Viceroy of India?',
   options: ['Lord Canning','Lord Curzon','Lord Ripon','Lord Dalhousie'],
   correctAnswerIndex: 0,
@@ -963,7 +963,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Forward Bloc?',
   options: ['Subhas Chandra Bose','Nehru','Patel','Tilak'],
   correctAnswerIndex: 0,
@@ -973,7 +973,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The capital of Ashoka"s empire was?',
   options: ['Pataliputra','Taxila','Ujjain','Vaishali'],
   correctAnswerIndex: 0,
@@ -983,7 +983,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who built the Charminar?',
   options: ['Muhammad Quli Qutb Shah','Aurangzeb','Akbar','Sher Shah Suri'],
   correctAnswerIndex: 0,
@@ -993,7 +993,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Sher Shah Suri is known for improving the?',
   options: ['Grand Trunk Road','Indian Railways','Delhi Metro','Konkan Railway'],
   correctAnswerIndex: 0,
@@ -1003,7 +1003,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which ruler built Purana Qila?',
   options: ['Sher Shah Suri','Babur','Akbar','Humayun'],
   correctAnswerIndex: 0,
@@ -1013,7 +1013,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who was the first Indian Nobel Prize winner?',
   options: ['Rabindranath Tagore','C. V. Raman','Mother Teresa','Amartya Sen'],
   correctAnswerIndex: 0,
@@ -1023,7 +1023,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who led the Salt March with Gandhi?',
   options: ['Thousands of volunteers','Only Congress leaders','British officials','INA soldiers'],
   correctAnswerIndex: 0,
@@ -1033,7 +1033,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which emperor issued rock and pillar edicts?',
   options: ['Ashoka','Harsha','Kanishka','Bindusara'],
   correctAnswerIndex: 0,
@@ -1043,7 +1043,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Indian National Army (originally)?',
   options: ['Mohan Singh','Subhas Chandra Bose','Rash Behari Bose','Bhagat Singh'],
   correctAnswerIndex: 0,
@@ -1053,7 +1053,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which ruler was known as Vikramaditya?',
   options: ['Chandragupta II','Samudragupta','Harsha','Ashoka'],
   correctAnswerIndex: 0,
@@ -1063,7 +1063,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'The First Buddhist Council was held at?',
   options: ['Rajgir','Vaishali','Pataliputra','Sarnath'],
   correctAnswerIndex: 0,
@@ -1073,7 +1073,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: "Who built Humayun's Tomb?",
   options: ['Haji Begum','Akbar','Humayun','Shah Jahan'],
   correctAnswerIndex: 0,
@@ -1084,7 +1084,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which Indian state was first formed on a linguistic basis?',
   options: ['Andhra Pradesh','Gujarat','Maharashtra','Punjab'],
   correctAnswerIndex: 0,
@@ -1094,7 +1094,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Gupta dynasty?',
   options: ['Sri Gupta','Chandragupta I','Samudragupta','Ghatotkacha'],
   correctAnswerIndex: 0,
@@ -1104,7 +1104,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Which movement was associated with Indigo farmers?',
   options: ['Champaran Satyagraha','Quit India','Khilafat','Swadeshi'],
   correctAnswerIndex: 0,
@@ -1114,7 +1114,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who wrote the Ain-i-Akbari?',
   options: ['Abul Fazl','Faizi','Badauni','Birbal'],
   correctAnswerIndex: 0,
@@ -1124,7 +1124,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: 'Who founded the Pala dynasty?',
   options: ['Gopala','Dharmapala','Devapala','Mahipala'],
   correctAnswerIndex: 0,
@@ -1134,7 +1134,7 @@ Question(
 ),
 
 Question(
-  category: 'History',
+  category: 'Indian History',
   questionText: "Who became India's first Prime Minister?",
   options: ['Jawaharlal Nehru','Sardar Patel','Rajendra Prasad','B. R. Ambedkar'],
   correctAnswerIndex: 0,
@@ -1150,7 +1150,7 @@ Question(
 
   // Added question 01 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which ancient civilization developed cuneiform writing in Mesopotamia?',
     options: [
       'Sumerians',
@@ -1166,7 +1166,7 @@ Question(
 
   // Added question 02 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'The Magna Carta was sealed in England in which year?',
     options: [
       '1215',
@@ -1182,7 +1182,7 @@ Question(
 
   // Added question 03 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which empire built the road network known as the Royal Road in ancient Persia?',
     options: [
       'Achaemenid Empire',
@@ -1198,7 +1198,7 @@ Question(
 
   // Added question 04 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was the first woman to win a Nobel Prize?',
     options: [
       'Marie Curie',
@@ -1214,7 +1214,7 @@ Question(
 
   // Added question 05 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which city was divided by a wall from 1961 until 1989?',
     options: [
       'Berlin',
@@ -1230,7 +1230,7 @@ Question(
 
   // Added question 06 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'The Meiji Restoration began in Japan in which year?',
     options: [
       '1868',
@@ -1246,7 +1246,7 @@ Question(
 
   // Added question 07 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which Indian emperor issued edicts promoting dhamma after the Kalinga War?',
     options: [
       'Ashoka',
@@ -1262,7 +1262,7 @@ Question(
 
   // Added question 08 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'The Rosetta Stone was crucial in deciphering which writing system?',
     options: [
       'Egyptian hieroglyphs',
@@ -1278,7 +1278,7 @@ Question(
 
   // Added question 09 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which revolution began with the storming of the Bastille in 1789?',
     options: [
       'French Revolution',
@@ -1294,7 +1294,7 @@ Question(
 
   // Added question 10 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who led the Haitian Revolution\'s early phase and became a key military leader before independence?',
     options: [
       'Toussaint Louverture',
@@ -1310,7 +1310,7 @@ Question(
 
   // Added question 11 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which treaty formally ended the First World War between Germany and the Allied powers?',
     options: [
       'Treaty of Versailles',
@@ -1326,7 +1326,7 @@ Question(
 
   // Added question 12 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which dynasty commissioned the construction of the Qutub Minar complex\'s earliest major structures?',
     options: [
       'Mamluk (Delhi Sultanate) dynasty',
@@ -1342,7 +1342,7 @@ Question(
 
   // Added question 13 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which city was the capital of the Byzantine Empire?',
     options: [
       'Constantinople',
@@ -1358,7 +1358,7 @@ Question(
 
   // Added question 14 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was the principal author of the United States Declaration of Independence\'s first draft?',
     options: [
       'Thomas Jefferson',
@@ -1374,7 +1374,7 @@ Question(
 
   // Added question 15 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which civilization built Machu Picchu?',
     options: [
       'Inca',
@@ -1390,7 +1390,7 @@ Question(
 
   // Added question 16 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'What was the main purpose of the Silk Road network?',
     options: [
       'Facilitate long-distance trade and cultural exchange',
@@ -1406,7 +1406,7 @@ Question(
 
   // Added question 17 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which Indian movement called for the British to leave India in 1942?',
     options: [
       'Quit India Movement',
@@ -1422,7 +1422,7 @@ Question(
 
   // Added question 18 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which event is generally considered the immediate trigger for the First World War?',
     options: [
       'Assassination of Archduke Franz Ferdinand',
@@ -1438,7 +1438,7 @@ Question(
 
   // Added question 19 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which civilization used a calendar system associated with the Long Count?',
     options: [
       'Maya',
@@ -1454,7 +1454,7 @@ Question(
 
   // Added question 20 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was the first Mughal emperor in India?',
     options: [
       'Babur',
@@ -1470,7 +1470,7 @@ Question(
 
   // Added question 21 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which agreement created the European Economic Community in 1957?',
     options: [
       'Treaty of Rome',
@@ -1486,7 +1486,7 @@ Question(
 
   // Added question 22 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which archaeological site is associated with the ancient city of Troy in modern-day Turkey?',
     options: [
       'Hisarlik',
@@ -1502,7 +1502,7 @@ Question(
 
   // Added question 23 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Who was the first Secretary-General of the United Nations?',
     options: [
       'Trygve Lie',
@@ -1518,7 +1518,7 @@ Question(
 
   // Added question 24 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'What was the primary aim of the Indian Green Revolution in its early phase?',
     options: [
       'Increase food-grain production using high-yield varieties and supporting inputs',
@@ -1534,7 +1534,7 @@ Question(
 
   // Added question 25 of 25 — History
   Question(
-    category: 'History',
+    category: 'Indian History',
     questionText: 'Which ancient Greek historian is often called the \'Father of History\'?',
     options: [
       'Herodotus',
