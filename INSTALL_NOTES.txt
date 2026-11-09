@@ -1,0 +1,120 @@
+QuizVerse V3 Correct-Answer Coverage Fix
+
+Replaces:
+- lib/models/quiz_history_entry.dart
+- lib/screens/game_screen.dart
+- lib/screens/home_screen.dart
+- lib/services/storage_service.dart
+
+Coverage counts distinct questions answered correctly at least once.
+Wrong answers and timeouts do not count. Repeated correct answers to the same question count once.
+Older attempted-question IDs are intentionally not counted as correct-answer coverage.
+Card height and grid extent remain unchanged; internal vertical spacing is tightened.
+
+Run:
+dart format lib/models/quiz_history_entry.dart lib/screens/game_screen.dart lib/screens/home_screen.dart lib/services/storage_service.dart
+flutter analyze
+flutter build apk --debug
+
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+QUIZVERSE V3 — DUAL PROGRESS BARS UPDATE
+
+Purpose
+- Keep the existing V5 category card dimensions and grid.
+- Retain the existing performance bar (best accuracy from completed sessions).
+- Add a second question-coverage bar based on unique questions attempted.
+- Count both correct and incorrect answers, including questions that time out or end in Game Over.
+- Deduplicate question identities across sessions using the source question category plus normalized question text.
+- Aggregate all category activity in the All card.
+
+Files
+- lib/models/quiz_history_entry.dart
+- lib/screens/game_screen.dart
+- lib/screens/home_screen.dart
+- lib/services/storage_service.dart
+
+Install
+1. Back up the current project or confirm the latest Git checkpoint is pushed.
+2. Extract this ZIP into the QuizVerse project root and merge/overwrite the listed files.
+3. Run:
+   flutter pub get
+   dart format lib/models/quiz_history_entry.dart lib/screens/game_screen.dart lib/screens/home_screen.dart lib/services/storage_service.dart
+   flutter analyze
+   flutter build apk --debug
+
+Compatibility
+- Existing history records remain readable. Older records do not contain question identities,
+  so they cannot contribute to the new unique-question coverage metric.
+- New sessions record unique question identities. Repeated attempts at the same question
+  count once for coverage.
+- No new package dependency is introduced.
+- The question banks, Question model, repository, scoring, lives, timer and card dimensions
+  are not changed.
+
+Verification
+Source changes prepared, but Flutter/Dart tools are not available in the file-preparation
+environment. Run the commands above in the user's Flutter environment and share the output.
+
+
+
+
+
+
+
+
+
+
+
+
+__________________________________________________________________________________________________________________________________________________________________________________________________________
+
+QUIZVERSE V3 — CATEGORY PROGRESS & LOCAL QUIZ HISTORY
+
+BASELINE
+- Apply this update on top of the Git commit you just created.
+- This package modifies only the existing HomeScreen, GameScreen and StorageService,
+  and adds the QuizHistoryEntry model and QuizHistoryScreen.
+- No question-bank files, Question model, QuestionRepository, game controller,
+  scoring rules, category identifiers or pubspec dependencies are changed.
+
+FEATURES
+1. Category cards retain their existing 146 logical-pixel height and two-column layout.
+2. Each card now displays:
+   - available question count
+   - completed quiz-session count
+   - best score
+   - latest score
+   - performance bar based on best accuracy in completed sessions
+3. Finished sessions are saved locally through the existing SharedPreferences dependency.
+4. Quiz History is available from the HomeScreen overflow menu.
+5. History records category, start/end timestamps, score, questions answered,
+   correct/incorrect answers, accuracy and outcome (Completed / Game Over).
+
+STATISTIC RULES (AS APPROVED)
+- Completed count: only sessions that reach the final question.
+- Best score and latest score: include Completed and Game Over sessions.
+- Performance bar: best accuracy from Completed sessions only.
+- A new Play Again session starts a new history record; it does not overwrite the prior one.
+
+INSTALL
+1. Extract the ZIP into the project root:
+   E:\MannzVerse\Projects\quizverse
+2. Allow the files to merge/overwrite when prompted.
+3. In the project terminal run:
+   flutter pub get
+   flutter analyze
+4. If analysis is clean, run:
+   flutter run
+5. Test one fully completed quiz and one Game Over session.
+6. Return to categories and confirm the selected category card refreshes its stats.
+7. Open the overflow menu > Quiz History and confirm both sessions appear.
+8. Fully close and reopen the app; confirm history and category stats persist.
+
+TEST STATUS
+- Source edits and integration points were reviewed.
+- Flutter/Dart SDK is not available in this packaging environment, so flutter analyze,
+  compilation, emulator testing and device testing have NOT been run here.
+- Do not treat this update as build-verified until the commands above pass locally.

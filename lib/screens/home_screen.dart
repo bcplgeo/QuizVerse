@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../utils/category_theme.dart';
+import '../services/storage_service.dart';
 import '../utils/categories.dart';
 import 'settings_screen.dart';
 import 'game_screen.dart';
+import 'quiz_history_screen.dart';
 import 'package:quizverse/services/audio_manager.dart';
 
 // =========================================
@@ -23,6 +25,50 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String selectedCategory = QuizCategory.science;
+
+  Map<String, Map<String, dynamic>> _categoryStats = {};
+
+  @override
+  void initState() {
+    super.initState();
+    AudioManager.playIntroMusic();
+    _loadCategoryStats();
+  }
+
+  Future<void> _loadCategoryStats() async {
+    final history = await StorageService.loadQuizHistory();
+    final categories = <String>{..._categories};
+    final updated = <String, Map<String, dynamic>>{};
+
+    for (final category in categories) {
+      final sessions = category == QuizCategory.all
+          ? history
+          : history.where((entry) => entry.category == category).toList();
+      final completed = sessions
+          .where((entry) => entry.status == 'completed')
+          .toList();
+      final scores = sessions.map((entry) => entry.score).toList();
+      final accuracies = completed.map((entry) => entry.accuracy).toList();
+      final uniqueQuestionIds = <String>{
+        for (final entry in sessions) ...entry.correctlyAnsweredQuestionIds,
+      };
+
+      updated[category] = {
+        'completedCount': completed.length,
+        'bestScore': scores.isEmpty
+            ? 0
+            : scores.reduce((a, b) => a > b ? a : b),
+        'latestScore': sessions.isEmpty ? null : sessions.first.score,
+        'bestAccuracy': accuracies.isEmpty
+            ? 0.0
+            : accuracies.reduce((a, b) => a > b ? a : b),
+        'uniqueQuestionsAnswered': uniqueQuestionIds.length,
+      };
+    }
+
+    if (!mounted) return;
+    setState(() => _categoryStats = updated);
+  }
 
   // Question totals reflect the current V3 question-bank inventory.
   // Original seven banks contain 125 questions each; the twelve
@@ -78,19 +124,14 @@ class _HomeScreenState extends State<HomeScreen> {
   static const Color _mutedText = Color(0xFF9BA7BD);
   static const Color _accent = Color(0xFFB69CFF);
 
-  @override
-  void initState() {
-    super.initState();
-    AudioManager.playIntroMusic();
-  }
-
-  void _startGame() {
-    Navigator.push(
+  Future<void> _startGame() async {
+    await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => GameScreen(category: selectedCategory),
       ),
     );
+    if (mounted) await _loadCategoryStats();
   }
 
   @override
@@ -120,8 +161,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 case 'settings':
                   Navigator.push(
                     context,
+                    MaterialPageRoute(builder: (_) => const SettingsScreen()),
+                  );
+                  break;
+                case 'history':
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (_) => const SettingsScreen(),
+                      builder: (_) => const QuizHistoryScreen(),
                     ),
                   );
                   break;
@@ -138,6 +185,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     Icon(Icons.settings_outlined, color: Colors.white70),
                     SizedBox(width: 10),
                     Text('Settings', style: TextStyle(color: Colors.white)),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'history',
+                child: Row(
+                  children: [
+                    Icon(Icons.history_rounded, color: Colors.white70),
+                    SizedBox(width: 10),
+                    Text('Quiz History', style: TextStyle(color: Colors.white)),
                   ],
                 ),
               ),
@@ -231,6 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           return _CategoryCard(
                             category: category,
                             questionCount: _questionCounts[category] ?? 0,
+                            stats: _categoryStats[category] ?? const {},
                             selected: isSelected,
                             onTap: () {
                               setState(() {
@@ -329,11 +387,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const Text(
             'Explore 19 categories and put your knowledge to the test.',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: _mutedText,
-              fontSize: 12.5,
-              height: 1.4,
-            ),
+            style: TextStyle(color: _mutedText, fontSize: 12.5, height: 1.4),
           ),
           const SizedBox(height: 16),
           Container(
@@ -375,11 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Row(
         children: [
-          Icon(
-            getCategoryIcon(selectedCategory),
-            color: _accent,
-            size: 20,
-          ),
+          Icon(getCategoryIcon(selectedCategory), color: _accent, size: 20),
           const SizedBox(width: 11),
           Expanded(
             child: Column(
@@ -430,12 +480,14 @@ class _HomeScreenState extends State<HomeScreen> {
 class _CategoryCard extends StatelessWidget {
   final String category;
   final int questionCount;
+  final Map<String, dynamic> stats;
   final bool selected;
   final VoidCallback onTap;
 
   const _CategoryCard({
     required this.category,
     required this.questionCount,
+    required this.stats,
     required this.selected,
     required this.onTap,
   });
@@ -542,7 +594,7 @@ class _CategoryCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 12, 13, 12),
+                    padding: const EdgeInsets.fromLTRB(14, 7, 13, 7),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -551,7 +603,7 @@ class _CategoryCard extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 9,
-                                vertical: 5,
+                                vertical: 4,
                               ),
                               decoration: BoxDecoration(
                                 color: accent.withOpacity(0.15),
@@ -629,35 +681,143 @@ class _CategoryCard extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 9),
+                        const SizedBox(height: 3),
                         Row(
                           children: [
                             Icon(
                               Icons.layers_rounded,
                               color: accent.withOpacity(0.95),
-                              size: 12,
+                              size: 11,
                             ),
-                            const SizedBox(width: 5),
+                            const SizedBox(width: 4),
                             Text(
-                              '$questionCount questions',
+                              '$questionCount Qs',
                               style: const TextStyle(
                                 color: Color(0xFFABB6C9),
-                                fontSize: 10,
+                                fontSize: 9,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                             const Spacer(),
-                            if (isSelected)
-                              Text(
-                                'READY',
-                                style: TextStyle(
-                                  color: accent,
+                            Text(
+                              '${stats['completedCount'] ?? 0} COMPLETED',
+                              style: TextStyle(
+                                color: accent,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 0.35,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 3),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'BEST ${stats['bestScore'] ?? 0}',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: Color(0xFFD5DDEC),
                                   fontSize: 8,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 0.8,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                'LAST ${stats['latestScore'] == null ? '—' : stats['latestScore']}',
+                                textAlign: TextAlign.end,
+                                maxLines: 1,
+                                style: const TextStyle(
+                                  color: Color(0xFFD5DDEC),
+                                  fontSize: 8,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
                           ],
+                        ),
+                        const SizedBox(height: 3),
+                        Row(
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                'PERFORMANCE',
+                                style: TextStyle(
+                                  color: Color(0xFFD5DDEC),
+                                  fontSize: 7,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.45,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              '${((stats['bestAccuracy'] as num?)?.toDouble() ?? 0.0).round()}%',
+                              style: TextStyle(
+                                color: accent,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 1),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: LinearProgressIndicator(
+                            minHeight: 3,
+                            value:
+                                ((stats['bestAccuracy'] as num?)?.toDouble() ??
+                                        0.0)
+                                    .clamp(0.0, 100.0) /
+                                100.0,
+                            backgroundColor: Colors.white.withOpacity(0.09),
+                            valueColor: AlwaysStoppedAnimation<Color>(accent),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                'QUESTION COVERAGE',
+                                style: TextStyle(
+                                  color: Color(0xFFD5DDEC),
+                                  fontSize: 7,
+                                  fontWeight: FontWeight.w800,
+                                  letterSpacing: 0.35,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              '${stats['uniqueQuestionsAnswered'] ?? 0}/$questionCount',
+                              style: TextStyle(
+                                color: accent,
+                                fontSize: 7,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 1),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: LinearProgressIndicator(
+                            minHeight: 3,
+                            value: questionCount <= 0
+                                ? 0
+                                : (((stats['uniqueQuestionsAnswered']
+                                                  as int?) ??
+                                              0) /
+                                          questionCount)
+                                      .clamp(0.0, 1.0),
+                            backgroundColor: Colors.white.withOpacity(0.09),
+                            valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFF7B9BFF),
+                            ),
+                          ),
                         ),
                       ],
                     ),

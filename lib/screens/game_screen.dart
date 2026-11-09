@@ -31,6 +31,7 @@ import '../services/storage_service.dart';
 import 'package:flutter/material.dart';
 
 import '../models/question.dart';
+import '../models/quiz_history_entry.dart';
 
 import '../game/question_repository.dart';
 
@@ -57,21 +58,18 @@ import 'game_over_screen.dart';
 
 import 'quiz_completed_screen.dart';
 
-
-
 // =========================================
 // GAME SCREEN
 // =========================================
 
 class GameScreen extends StatefulWidget {
-
   // =========================================
   // CATEGORY
   // =========================================
 
   final String category;
 
-    // =========================================
+  // =========================================
   // SHUFFLE CONTROL
   // =========================================
 
@@ -120,38 +118,32 @@ class GameScreen extends StatefulWidget {
 // =============================================================
 
 Question shuffleQuestionOptions(Question question) {
+  // =============================================================
+  // START: Debug Question Shuffle
+  //
+  // Purpose:
+  // Verify that every question passes through the
+  // answer randomization function.
+  //
+  // Remove after testing.
+  //
+  // =============================================================
 
   // =============================================================
-// START: Debug Question Shuffle
-//
-// Purpose:
-// Verify that every question passes through the
-// answer randomization function.
-//
-// Remove after testing.
-//
-// =============================================================
-
-
-// =============================================================
-// END: Debug Question Shuffle
-// =============================================================
+  // END: Debug Question Shuffle
+  // =============================================================
 
   // Create a copy of the options.
   final shuffledOptions = List<String>.from(question.options);
 
   // Store the correct answer BEFORE shuffling.
-  final correctAnswer =
-  question.options[question.correctAnswerIndex];
+  final correctAnswer = question.options[question.correctAnswerIndex];
 
   // Randomly shuffle the copied list.
-  shuffledOptions.shuffle(
-    Random(DateTime.now().microsecondsSinceEpoch),
-  );
+  shuffledOptions.shuffle(Random(DateTime.now().microsecondsSinceEpoch));
 
   // Find the new location of the correct answer.
-  final newCorrectIndex =
-  shuffledOptions.indexOf(correctAnswer);
+  final newCorrectIndex = shuffledOptions.indexOf(correctAnswer);
 
   // Return a brand-new Question object.
   return Question(
@@ -173,30 +165,25 @@ Question shuffleQuestionOptions(Question question) {
 // DISPOSE
 // =========================================
 
-
-
 class _GameScreenState extends State<GameScreen> {
-
-
   // =============================================================
-// START: GameScreen Context
-//
-// Purpose:
-// Stores the GameScreen's own BuildContext so it can be
-// used later after asynchronous operations like ads.
-//
-// =============================================================
+  // START: GameScreen Context
+  //
+  // Purpose:
+  // Stores the GameScreen's own BuildContext so it can be
+  // used later after asynchronous operations like ads.
+  //
+  // =============================================================
 
   late BuildContext gameScreenContext;
 
-// =============================================================
-// END: GameScreen Context
-// =============================================================
-
+  // =============================================================
+  // END: GameScreen Context
+  // =============================================================
 
   // =========================================
-// QUESTIONS FOR CURRENT GAME
-// =========================================
+  // QUESTIONS FOR CURRENT GAME
+  // =========================================
 
   late List<Question> questions;
 
@@ -212,7 +199,55 @@ class _GameScreenState extends State<GameScreen> {
 
   int currentQuestionIndex = 0;
 
-bool showReviewCard = false;
+  // Session metadata used by the local quiz history.
+  DateTime sessionStartedAt = DateTime.now();
+  bool _sessionRecorded = false;
+  final Set<String> _correctlyAnsweredQuestionIds = <String>{};
+
+  // Category-scoped normalized question text provides a stable identity
+  // across shuffled options and repeated quiz sessions.
+  void _trackCorrectQuestion() {
+    final normalizedText = currentQuestion.questionText
+        .trim()
+        .toLowerCase()
+        .replaceAll(RegExp(r'\s+'), ' ');
+    _correctlyAnsweredQuestionIds.add(
+      '${currentQuestion.category}::$normalizedText',
+    );
+  }
+
+  Future<void> _recordQuizSession(String status) async {
+    if (_sessionRecorded) return;
+    _sessionRecorded = true;
+
+    final finishedAt = DateTime.now();
+    final answered = gameController.questionsAnswered;
+    final correct = gameController.correctAnswers;
+
+    try {
+      await StorageService.saveQuizHistoryEntry(
+        QuizHistoryEntry(
+          id: '${sessionStartedAt.microsecondsSinceEpoch}_${finishedAt.microsecondsSinceEpoch}',
+          category: widget.category,
+          startedAt: sessionStartedAt,
+          finishedAt: finishedAt,
+          score: gameController.score,
+          questionsAnswered: answered,
+          correctAnswers: correct,
+          incorrectAnswers: answered - correct,
+          accuracy: gameController.accuracyPercentage,
+          status: status,
+          correctlyAnsweredQuestionIds: _correctlyAnsweredQuestionIds.toList()
+            ..sort(),
+        ),
+      );
+    } catch (error) {
+      // A history write failure must never prevent the end-of-quiz screen.
+      debugPrint('QuizVerse: unable to save quiz history: $error');
+    }
+  }
+
+  bool showReviewCard = false;
 
   // =========================================
   // LAST ANSWER RESULT
@@ -221,17 +256,17 @@ bool showReviewCard = false;
   bool lastAnswerCorrect = false;
 
   // =========================================
-// INIT STATE
-// =========================================
+  // INIT STATE
+  // =========================================
 
   // =============================================================
-// START: Load Saved High Score
-//
-// Purpose:
-// Load the saved High Score from device storage
-// when the Game Screen is created.
-//
-// =============================================================
+  // START: Load Saved High Score
+  //
+  // Purpose:
+  // Load the saved High Score from device storage
+  // when the Game Screen is created.
+  //
+  // =============================================================
 
   Future<void> loadHighScore() async {
     final savedHighScore = await StorageService.loadHighScore();
@@ -243,16 +278,15 @@ bool showReviewCard = false;
     });
   }
 
-// =============================================================
-// END: Load Saved High Score
-// =============================================================
+  // =============================================================
+  // END: Load Saved High Score
+  // =============================================================
 
   @override
   void initState() {
     super.initState();
     // Load saved High Score
     loadHighScore();
-
 
     // =========================================
     // LOAD QUESTIONS FOR SELECTED CATEGORY
@@ -273,22 +307,21 @@ bool showReviewCard = false;
     // =========================================
 
     // =============================================================
-// START: LOAD QUESTIONS WITH SHUFFLED OPTIONS
-//
-// Purpose:
-// Load all questions and randomize the answer options
-// for every question before the game begins.
-//
-// =============================================================
+    // START: LOAD QUESTIONS WITH SHUFFLED OPTIONS
+    //
+    // Purpose:
+    // Load all questions and randomize the answer options
+    // for every question before the game begins.
+    //
+    // =============================================================
 
-    questions = QuestionRepository
-        .getQuestions(widget.category)
-        .map(shuffleQuestionOptions)
-        .toList();
+    questions = QuestionRepository.getQuestions(
+      widget.category,
+    ).map(shuffleQuestionOptions).toList();
 
-// =============================================================
-// END: LOAD QUESTIONS WITH SHUFFLED OPTIONS
-// =============================================================
+    // =============================================================
+    // END: LOAD QUESTIONS WITH SHUFFLED OPTIONS
+    // =============================================================
 
     // =========================================
     // SHUFFLE ONLY FOR NEW GAMES
@@ -310,9 +343,9 @@ bool showReviewCard = false;
     startTimer();
   }
 
-// =========================================
-// DISPOSE
-// =========================================
+  // =========================================
+  // DISPOSE
+  // =========================================
 
   @override
   void dispose() {
@@ -321,96 +354,93 @@ bool showReviewCard = false;
     super.dispose();
   }
 
-
   // =========================================
-// QUESTION TIMER
-// =========================================
+  // QUESTION TIMER
+  // =========================================
 
   Timer? questionTimer;
 
-// =============================================================
-// START: Timer Pause Flag
-//
-// Purpose:
-// Temporarily freezes the quiz timer while an
-// interstitial advertisement is being shown.
-//
-// false = Timer runs normally
-// true  = Timer is paused
-//
-// =============================================================
+  // =============================================================
+  // START: Timer Pause Flag
+  //
+  // Purpose:
+  // Temporarily freezes the quiz timer while an
+  // interstitial advertisement is being shown.
+  //
+  // false = Timer runs normally
+  // true  = Timer is paused
+  //
+  // =============================================================
 
   bool isTimerPaused = false;
 
-// =============================================================
-// END: Timer Pause Flag
-// =============================================================
+  // =============================================================
+  // END: Timer Pause Flag
+  // =============================================================
 
   int timeRemaining = 10;
 
   // =============================================================
-// START: Timer Warning Flag
-//
-// Purpose:
-// Ensures the timer warning sound is played
-// only once for each question.
-//
-// =============================================================
+  // START: Timer Warning Flag
+  //
+  // Purpose:
+  // Ensures the timer warning sound is played
+  // only once for each question.
+  //
+  // =============================================================
 
   bool timerWarningPlayed = false;
 
-// =============================================================
-// END: Timer Warning Flag
-// =============================================================
+  // =============================================================
+  // END: Timer Warning Flag
+  // =============================================================
 
   // =============================================================
-// START: Pending Game Over Flag
-//
-// Purpose:
-// Delays the Game Over dialog until the player has
-// finished reading the Review Card.
-//
-// false = Continue game normally
-// true  = Show Game Over after Next is pressed
-//
-// =============================================================
+  // START: Pending Game Over Flag
+  //
+  // Purpose:
+  // Delays the Game Over dialog until the player has
+  // finished reading the Review Card.
+  //
+  // false = Continue game normally
+  // true  = Show Game Over after Next is pressed
+  //
+  // =============================================================
 
   bool pendingGameOver = false;
 
-// =============================================================
-// END: Pending Game Over Flag
-// =============================================================
-
+  // =============================================================
+  // END: Pending Game Over Flag
+  // =============================================================
 
   // =========================================
   // CURRENT QUESTION
   // =========================================
 
   // =============================================================
-// START: Current Question Debug
-//
-// Purpose:
-// Display the current correct answer index in the app.
-// This helps us verify whether answer options are being
-// randomized.
-//
-// IMPORTANT:
-// Remove this after debugging.
-//
-// =============================================================
+  // START: Current Question Debug
+  //
+  // Purpose:
+  // Display the current correct answer index in the app.
+  // This helps us verify whether answer options are being
+  // randomized.
+  //
+  // IMPORTANT:
+  // Remove this after debugging.
+  //
+  // =============================================================
 
   Question get currentQuestion {
-        return questions[currentQuestionIndex];
+    return questions[currentQuestionIndex];
   }
 
-// =============================================================
-// END: Current Question Debug
-// =============================================================
-
+  // =============================================================
+  // END: Current Question Debug
+  // =============================================================
 
   // =========================================
-// START TIMER
-// =========================================
+  // START TIMER
+  // =========================================
 
   void startTimer() {
     // Stop existing timer
@@ -425,74 +455,69 @@ bool showReviewCard = false;
       timerWarningPlayed = false;
     });
 
-    questionTimer = Timer.periodic(
-      const Duration(seconds: 1),
-          (timer) {
-        if (!mounted) return;
-        // Pause countdown while an interstitial ad is visible.
-        if (isTimerPaused) {
-          return;
+    questionTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) return;
+      // Pause countdown while an interstitial ad is visible.
+      if (isTimerPaused) {
+        return;
+      }
+
+      if (timeRemaining > 0) {
+        setState(() {
+          timeRemaining--;
+        });
+
+        // =============================================================
+        // START: Timer Warning Sound
+        //
+        // Purpose:
+        // Play a warning sound once when only
+        // 3 seconds remain.
+        //
+        // =============================================================
+
+        if (timeRemaining == 3 && !timerWarningPlayed) {
+          timerWarningPlayed = true;
+
+          AudioManager.playTimerWarningSound();
         }
 
-        if (timeRemaining > 0) {
-          setState(() {
-            timeRemaining--;
-          });
-
-          // =============================================================
-          // START: Timer Warning Sound
-          //
-          // Purpose:
-          // Play a warning sound once when only
-          // 3 seconds remain.
-          //
-          // =============================================================
-
-          if (timeRemaining == 3 && !timerWarningPlayed) {
-            timerWarningPlayed = true;
-
-
-
-            AudioManager.playTimerWarningSound();
-          }
-
-          // =============================================================
-          // END: Timer Warning Sound
-          // =============================================================
-        } else {
-          timer.cancel();
-          handleTimeUp();
-        }
-      },
-    );
+        // =============================================================
+        // END: Timer Warning Sound
+        // =============================================================
+      } else {
+        timer.cancel();
+        handleTimeUp();
+      }
+    });
   }
   // =========================================
-// TIME UP
-// =========================================
+  // TIME UP
+  // =========================================
 
   void handleTimeUp() {
     gameController.loseLife();
 
     // =============================================================
-// START: Delay Game Over Until Review Card
-//
-// Purpose:
-// If the player has lost the last life,
-// do NOT show the Game Over dialog immediately.
-//
-// Instead, remember that a Game Over is pending.
-// The dialog will appear after the player presses
-// the Next button on the Review Card.
-//
-// =============================================================
+    // START: Delay Game Over Until Review Card
+    //
+    // Purpose:
+    // If the player has lost the last life,
+    // do NOT show the Game Over dialog immediately.
+    //
+    // Instead, remember that a Game Over is pending.
+    // The dialog will appear after the player presses
+    // the Next button on the Review Card.
+    //
+    // =============================================================
 
     if (gameController.isGameOver()) {
       pendingGameOver = true;
     }
 
-// =============================================================
-// END: Delay Game Over Until Review Card
-// =============================================================
+    // =============================================================
+    // END: Delay Game Over Until Review Card
+    // =============================================================
 
     lastAnswerCorrect = false;
     showReviewDialog();
@@ -505,31 +530,32 @@ bool showReviewCard = false;
   Future<void> checkAnswer(int selectedIndex) async {
     questionTimer?.cancel();
     if (selectedIndex == currentQuestion.correctAnswerIndex) {
+      _trackCorrectQuestion();
       // =============================================================
-// START: Correct Answer Sound
-//
-// Purpose:
-// Play a positive sound whenever the player answers correctly.
-//
-// =============================================================
+      // START: Correct Answer Sound
+      //
+      // Purpose:
+      // Play a positive sound whenever the player answers correctly.
+      //
+      // =============================================================
 
       AudioManager.playCorrectSound();
 
-// =============================================================
-// END: Correct Answer Sound
-// =============================================================
       // =============================================================
-// START: Update & Save High Score
-//
-// Purpose:
-// After a correct answer, update the High Score.
-// If a new record is achieved, immediately save it
-// to permanent storage.
-//
-// This protects the score even if the app closes
-// unexpectedly.
-//
-// =============================================================
+      // END: Correct Answer Sound
+      // =============================================================
+      // =============================================================
+      // START: Update & Save High Score
+      //
+      // Purpose:
+      // After a correct answer, update the High Score.
+      // If a new record is achieved, immediately save it
+      // to permanent storage.
+      //
+      // This protects the score even if the app closes
+      // unexpectedly.
+      //
+      // =============================================================
 
       gameController.addScore();
 
@@ -543,11 +569,10 @@ bool showReviewCard = false;
 
       lastAnswerCorrect = true;
 
-// =============================================================
-// END: Update & Save High Score
-// =============================================================
+      // =============================================================
+      // END: Update & Save High Score
+      // =============================================================
     } else {
-
       // =============================================================
       // START: Wrong Answer Sound
       //
@@ -570,21 +595,21 @@ bool showReviewCard = false;
       lastAnswerCorrect = false;
 
       // =============================================================
-// START: Delay Game Over Until Review Card
-//
-// Purpose:
-// Remember that the game is over, but allow the
-// Review Card to appear first.
-//
-// =============================================================
+      // START: Delay Game Over Until Review Card
+      //
+      // Purpose:
+      // Remember that the game is over, but allow the
+      // Review Card to appear first.
+      //
+      // =============================================================
 
       if (gameController.isGameOver()) {
         pendingGameOver = true;
       }
 
-// =============================================================
-// END: Delay Game Over Until Review Card
-// =============================================================
+      // =============================================================
+      // END: Delay Game Over Until Review Card
+      // =============================================================
     }
 
     showReviewDialog();
@@ -600,7 +625,7 @@ bool showReviewCard = false;
           child: AnswerReviewCard(
             isCorrect: lastAnswerCorrect,
             correctAnswer:
-            currentQuestion.options[currentQuestion.correctAnswerIndex],
+                currentQuestion.options[currentQuestion.correctAnswerIndex],
             explanation: currentQuestion.explanation,
             whyItMatters: currentQuestion.whyItMatters,
             difficulty: currentQuestion.difficulty,
@@ -608,14 +633,11 @@ bool showReviewCard = false;
             onNext: () {
               Navigator.pop(context);
 
-              Future.delayed(
-                const Duration(milliseconds: 150),
-                    () {
-                  if (mounted) {
-                    moveToNextQuestion();
-                  }
-                },
-              );
+              Future.delayed(const Duration(milliseconds: 150), () {
+                if (mounted) {
+                  moveToNextQuestion();
+                }
+              });
             },
           ),
         );
@@ -627,19 +649,20 @@ bool showReviewCard = false;
   // NEXT QUESTION
   // =========================================
 
-  void moveToNextQuestion() {
-
+  Future<void> moveToNextQuestion() async {
     // =============================================================
-// START: Pending Game Over Check
-//
-// Purpose:
-// If the player has already lost all lives,
-// show the Game Over dialog instead of moving
-// to another question.
-//
-// =============================================================
+    // START: Pending Game Over Check
+    //
+    // Purpose:
+    // If the player has already lost all lives,
+    // show the Game Over dialog instead of moving
+    // to another question.
+    //
+    // =============================================================
 
     if (pendingGameOver) {
+      await _recordQuizSession('game_over');
+      if (!mounted) return;
       pendingGameOver = false;
 
       gameController.updateHighScore();
@@ -647,7 +670,6 @@ bool showReviewCard = false;
       AudioManager.playGameOverSound();
 
       Navigator.push(
-
         context,
         MaterialPageRoute(
           builder: (_) => GameOverScreen(
@@ -675,6 +697,9 @@ bool showReviewCard = false;
                 currentQuestionIndex = 0;
 
                 gameController.resetGame();
+                sessionStartedAt = DateTime.now();
+                _sessionRecorded = false;
+                _correctlyAnsweredQuestionIds.clear();
 
                 timeRemaining = 10;
                 pendingGameOver = false;
@@ -695,9 +720,9 @@ bool showReviewCard = false;
       return;
     }
 
-// =============================================================
-// END: Pending Game Over Check
-// =============================================================
+    // =============================================================
+    // END: Pending Game Over Check
+    // =============================================================
     showReviewCard = false;
     if (currentQuestionIndex < questions.length - 1) {
       setState(() {
@@ -707,7 +732,8 @@ bool showReviewCard = false;
 
       startTimer();
     } else {
-
+      await _recordQuizSession('completed');
+      if (!mounted) return;
       gameController.updateHighScore();
 
       AudioManager.playVictorySound();
@@ -738,6 +764,9 @@ bool showReviewCard = false;
                     currentQuestionIndex = 0;
 
                     gameController.resetGame();
+                    sessionStartedAt = DateTime.now();
+                    _sessionRecorded = false;
+                    _correctlyAnsweredQuestionIds.clear();
 
                     timeRemaining = 10;
                   });
@@ -762,7 +791,6 @@ bool showReviewCard = false;
   // GAME OVER
   // =========================================
 
-
   // =========================================
   // BUILD HEARTS
   // =========================================
@@ -785,12 +813,7 @@ bool showReviewCard = false;
   }) {
     return Row(
       children: [
-
-        Icon(
-          icon,
-          size: 18,
-          color: iconColor,
-        ),
+        Icon(icon, size: 18, color: iconColor),
 
         const SizedBox(width: 6),
 
@@ -824,7 +847,6 @@ bool showReviewCard = false;
   @override
   @override
   Widget build(BuildContext context) {
-
     gameScreenContext = context;
 
     return Scaffold(
@@ -844,7 +866,6 @@ bool showReviewCard = false;
 
         title: Row(
           children: [
-
             Image.asset(
               'assets/images/quizverse_logo.png',
               height: 36,
@@ -868,293 +889,270 @@ bool showReviewCard = false;
       ),
 
       body: SafeArea(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // =========================================
-            // LIVES
-            // =========================================
-
-            Row(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-
-                Text(
-                  buildLivesDisplay(),
-                  style: const TextStyle(
-                    fontSize: 30,
-                  ),
-                ),
-
-                const SizedBox(width: 12),
-
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
-
-                  decoration: BoxDecoration(
-                    color: currentQuestion.difficulty == 'Easy'
-                        ? Colors.green.shade100
-                        : currentQuestion.difficulty == 'Medium'
-                        ? Colors.orange.shade100
-                        : Colors.red.shade100,
-
-                    borderRadius: BorderRadius.circular(18),
-                  ),
-
-                  child: Text(
-                    currentQuestion.difficulty,
-
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-
-                      color: currentQuestion.difficulty == 'Easy'
-                          ? Colors.green.shade900
-                          : currentQuestion.difficulty == 'Medium'
-                          ? Colors.orange.shade900
-                          : Colors.red.shade900,
+                // =========================================
+                // LIVES
+                // =========================================
+                Row(
+                  children: [
+                    Text(
+                      buildLivesDisplay(),
+                      style: const TextStyle(fontSize: 30),
                     ),
-                  ),
-                ),
 
-                const SizedBox(width: 8),
+                    const SizedBox(width: 12),
 
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-
-                  decoration: BoxDecoration(
-                    color: Colors.amber.shade100,
-                    borderRadius: BorderRadius.circular(20),
-
-                    border: Border.all(
-                      color: Colors.amber.shade700,
-                    ),
-                  ),
-
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-
-                      const Icon(
-                        Icons.emoji_events,
-                        color: Colors.amber,
-                        size: 18,
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
                       ),
 
-                      const SizedBox(width: 5),
+                      decoration: BoxDecoration(
+                        color: currentQuestion.difficulty == 'Easy'
+                            ? Colors.green.shade100
+                            : currentQuestion.difficulty == 'Medium'
+                            ? Colors.orange.shade100
+                            : Colors.red.shade100,
 
-                      Text(
-                        '${gameController.highScore}',
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+
+                      child: Text(
+                        currentQuestion.difficulty,
 
                         style: TextStyle(
-                          color: Colors.amber.shade900,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
 
-            const SizedBox(height: 4),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-
-
-                TimerBar(
-                  timeRemaining: timeRemaining,
-                  totalTime: 10,
-                  category: questions[currentQuestionIndex].category,
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 6),
-
-            Container(
-              width: double.infinity,
-
-              padding: const EdgeInsets.all(16),
-
-              decoration: BoxDecoration(
-                color: Colors.white,
-
-                borderRadius: BorderRadius.circular(18),
-
-                border: Border.all(
-                  color: getCategoryColor(
-                    questions[currentQuestionIndex].category,
-                  ),
-                  width: 2,
-                ),
-
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-
-              child: Column(
-                children: [
-
-                  // ==========================
-                  // HANGMAN
-                  // ==========================
-
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.15,
-
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 45),
-
-                        child: HangmanWidget(
-                          timeRemaining: timeRemaining,
+                          color: currentQuestion.difficulty == 'Easy'
+                              ? Colors.green.shade900
+                              : currentQuestion.difficulty == 'Medium'
+                              ? Colors.orange.shade900
+                              : Colors.red.shade900,
                         ),
                       ),
                     ),
-                  ),
 
-                  const SizedBox(height: 6),
+                    const SizedBox(width: 8),
 
-                  const SizedBox(height: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
 
-                  // ==========================
-                  // TITLE
-                  // ==========================
+                      decoration: BoxDecoration(
+                        color: Colors.amber.shade100,
+                        borderRadius: BorderRadius.circular(20),
 
+                        border: Border.all(color: Colors.amber.shade700),
+                      ),
 
-                ],
-              ),
-            ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.emoji_events,
+                            color: Colors.amber,
+                            size: 18,
+                          ),
 
+                          const SizedBox(width: 5),
 
-            // =========================================
-            // QUESTION NUMBER
-            // =========================================
+                          Text(
+                            '${gameController.highScore}',
 
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+                            style: TextStyle(
+                              color: Colors.amber.shade900,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
 
+                const SizedBox(height: 4),
+
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TimerBar(
+                      timeRemaining: timeRemaining,
+                      totalTime: 10,
+                      category: questions[currentQuestionIndex].category,
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 6),
 
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
+                  width: double.infinity,
+
+                  padding: const EdgeInsets.all(16),
 
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
+
+                    borderRadius: BorderRadius.circular(18),
+
                     border: Border.all(
                       color: getCategoryColor(
                         questions[currentQuestionIndex].category,
                       ),
                       width: 2,
                     ),
+
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 6,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
 
-                  child: Row(
+                  child: Column(
                     children: [
+                      // ==========================
+                      // HANGMAN
+                      // ==========================
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.15,
 
-                      Icon(
-                        getCategoryIcon(
-                          questions[currentQuestionIndex].category,
-                        ),
-                        size: 28,
-                        color: getCategoryColor(
-                          questions[currentQuestionIndex].category,
-                        ),
-                      ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
 
-                      const SizedBox(width: 10),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 45),
 
-                      Expanded(
-                        child: Text(
-                          questions[currentQuestionIndex]
-                              .category
-                              .toUpperCase(),
-
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: getCategoryColor(
-                              questions[currentQuestionIndex].category,
-                            ),
+                            child: HangmanWidget(timeRemaining: timeRemaining),
                           ),
                         ),
                       ),
 
-                      Text(
-                        "${currentQuestionIndex + 1}/${questions.length}",
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54,
-                        ),
-                      ),
+                      const SizedBox(height: 6),
+
+                      const SizedBox(height: 8),
+
+                      // ==========================
+                      // TITLE
+                      // ==========================
                     ],
                   ),
                 ),
-              ],
-            ),
 
+                // =========================================
+                // QUESTION NUMBER
+                // =========================================
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
 
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: getCategoryColor(
+                            questions[currentQuestionIndex].category,
+                          ),
+                          width: 2,
+                        ),
+                      ),
 
-            // =========================================
-            // REVIEW CARD
-            // =========================================
+                      child: Row(
+                        children: [
+                          Icon(
+                            getCategoryIcon(
+                              questions[currentQuestionIndex].category,
+                            ),
+                            size: 28,
+                            color: getCategoryColor(
+                              questions[currentQuestionIndex].category,
+                            ),
+                          ),
 
-            // =========================================
-// REVIEW CARD
-// =========================================
+                          const SizedBox(width: 10),
 
+                          Expanded(
+                            child: Text(
+                              questions[currentQuestionIndex].category
+                                  .toUpperCase(),
+
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: getCategoryColor(
+                                  questions[currentQuestionIndex].category,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Text(
+                            "${currentQuestionIndex + 1}/${questions.length}",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+
+                // =========================================
+                // REVIEW CARD
+                // =========================================
+
+                // =========================================
+                // REVIEW CARD
+                // =========================================
                 if (showReviewCard)
-          AnswerReviewCard(
-          isCorrect: lastAnswerCorrect,
+                  AnswerReviewCard(
+                    isCorrect: lastAnswerCorrect,
 
-          correctAnswer:
-          currentQuestion.options[currentQuestion.correctAnswerIndex],
+                    correctAnswer: currentQuestion
+                        .options[currentQuestion.correctAnswerIndex],
 
-          explanation: currentQuestion.explanation,
+                    explanation: currentQuestion.explanation,
 
-          whyItMatters: currentQuestion.whyItMatters,
+                    whyItMatters: currentQuestion.whyItMatters,
 
-          difficulty: currentQuestion.difficulty,
-            // =============================================================
-// START: Final Review Status
-//
-// Purpose:
-// Tell the Review Card whether this is the last
-// review before the Game Over dialog.
-//
-// =============================================================
+                    difficulty: currentQuestion.difficulty,
 
-            isFinalReview: pendingGameOver,
+                    // =============================================================
+                    // START: Final Review Status
+                    //
+                    // Purpose:
+                    // Tell the Review Card whether this is the last
+                    // review before the Game Over dialog.
+                    //
+                    // =============================================================
+                    isFinalReview: pendingGameOver,
 
-// =============================================================
-// END: Final Review Status
-// =============================================================
-
-          onNext: moveToNextQuestion,
-        )
-      else ...[
+                    // =============================================================
+                    // END: Final Review Status
+                    // =============================================================
+                    onNext: () {
+                      moveToNextQuestion();
+                    },
+                  )
+                else ...[
                   Container(
                     padding: const EdgeInsets.all(18),
 
@@ -1181,10 +1179,8 @@ bool showReviewCard = false;
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Row(
                           children: [
-
                             Icon(
                               Icons.help_outline,
                               color: getCategoryColor(
@@ -1221,81 +1217,72 @@ bool showReviewCard = false;
                     ),
                   ),
 
-    const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-    ...List.generate(
-    currentQuestion.options.length,
-    (index) {
-    return Padding(
-    padding: const EdgeInsets.only(
-    bottom: 12,
-    ),
-      child: ElevatedButton(
-        onPressed: () {
-          checkAnswer(index);
-        },
+                  ...List.generate(currentQuestion.options.length, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          checkAnswer(index);
+                        },
 
-        style: ElevatedButton.styleFrom(
-          backgroundColor: getCategoryButtonBackground(
-            questions[currentQuestionIndex].category,
-          ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: getCategoryButtonBackground(
+                            questions[currentQuestionIndex].category,
+                          ),
 
-          foregroundColor: getCategoryForeground(
-            questions[currentQuestionIndex].category,
-          ),
+                          foregroundColor: getCategoryForeground(
+                            questions[currentQuestionIndex].category,
+                          ),
 
-          elevation: 6,
+                          elevation: 6,
 
-          shadowColor: getCategoryColor(
-            questions[currentQuestionIndex].category,
-          ),
+                          shadowColor: getCategoryColor(
+                            questions[currentQuestionIndex].category,
+                          ),
 
-          side: BorderSide(
-            color: getCategoryColor(
-              questions[currentQuestionIndex].category,
-            ),
-            width: 2,
-          ),
+                          side: BorderSide(
+                            color: getCategoryColor(
+                              questions[currentQuestionIndex].category,
+                            ),
+                            width: 2,
+                          ),
 
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18),
-          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
 
-          padding: const EdgeInsets.symmetric(
-            vertical: 14,
-          ),
-        ),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                        ),
 
-        child: Text(
-          currentQuestion.options[index],
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-    },
-    ),
+                        child: Text(
+                          currentQuestion.options[index],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
 
                   const SizedBox(height: 4),
 
                   // =========================================
-// HANGMAN & GAME STATS PANEL
-// =========================================
+                  // HANGMAN & GAME STATS PANEL
+                  // =========================================
 
-
-// =========================================
-// END PANEL
-// =========================================
-    ],
-    ]
-    ),
-    ),
-    ),
-    ),
-
+                  // =========================================
+                  // END PANEL
+                  // =========================================
+                ],
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
